@@ -1,16 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
-
-
-	float levelSpeed;
-
-	int curLevel;
-
-	int highScore;
-
-	int score;
+public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

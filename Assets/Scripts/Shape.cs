@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class Shape : MonoBehaviour {
 
 
-	float levelSpeed;
 
-	int curLevel;
+	int sides;
+	Color color;
 
-	int highScore;
-
-	int score;
+	Mesh shapeMesh;
 
 	// Use this for initialization
+
 	void Start () {
 	
 	}
