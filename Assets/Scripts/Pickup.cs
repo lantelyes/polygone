@@ -7,7 +7,7 @@ public class Pickup : MonoBehaviour {
 
 	GameManager gameManager;
 
-	virtual void Modify() {
+	public virtual void Modify() {
 	}
 
 	void Start () {
