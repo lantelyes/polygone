@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PentagonPrism : Shape {
+public class Pentagon : Shape {
 
 	// Use this for initialization
 	void Start () {
