@@ -10,12 +10,12 @@ public class Pickup : MonoBehaviour {
 	public virtual void Modify() {
 	}
 
-	void Start () {
+	public virtual void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
 	
 	}
 }
