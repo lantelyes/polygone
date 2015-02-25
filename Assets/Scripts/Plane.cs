@@ -9,7 +9,9 @@ public class Plane : Shape {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	public override void Update () {
+		
+		base.Update ();
+		
 	}
 }

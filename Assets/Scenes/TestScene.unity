@@ -172,7 +172,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 978550866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.32000005, y: 1.77999997, z: -2.78999996}
+  m_LocalPosition: {x: 1.32000005, y: 1.77999997, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -188,8 +188,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4b5823722554d3bb5950198ad3d5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shapeToSpawn: {fileID: 190626, guid: cd480fd9898bb46ebac8c38505f252ee, type: 2}
-  delay: 5
+  shapesToSpawn:
+  - {fileID: 190626, guid: cd480fd9898bb46ebac8c38505f252ee, type: 2}
+  - {fileID: 182164, guid: 16761ff38058d4eb8a69a46e85609257, type: 2}
+  - {fileID: 190778, guid: 59a87ce4613a04767b5487e5f10a9520, type: 2}
+  - {fileID: 118000, guid: 978a907f8c0a74585a9652c934eb84b9, type: 2}
+  - {fileID: 199150, guid: ca92646ca522347cc947cd4d5505d1a5, type: 2}
+  delay: 3
   spawning: 1
 --- !u!1 &1571315355
 GameObject:

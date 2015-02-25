@@ -9,7 +9,11 @@ public class HexagonPrism : Shape {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public override void Update () {
+
+		base.Update();
+
+
 	
 	}
 }

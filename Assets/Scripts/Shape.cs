@@ -8,6 +8,8 @@ public class Shape : MonoBehaviour {
 	int sides;
 	Color color;
 
+	public float KillY;
+
 	Mesh shapeMesh;
 
 	// Use this for initialization
@@ -17,7 +19,11 @@ public class Shape : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
+		if (transform.position.y <= KillY) {
+			Destroy(gameObject);
+
+		}
 	
 	}
 }
