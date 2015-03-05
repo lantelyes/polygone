@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
 
+	float timeScaleFactor = 0.001f;
+
+
 	float levelSpeed;
 
 	int curLevel;
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour {
 		pickRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
 		if (Input.GetMouseButtonUp (0)) {
-			Time.timeScale = 0.75f;
+			Time.timeScale = 0.75f + timeScaleFactor;
 			isChecking = false;
 
 			for (int i = 0; i < polys.Count; i++) {
@@ -78,7 +81,7 @@ public class GameManager : MonoBehaviour {
 
 
 		if (isChecking) {
-			Time.timeScale = 0.1f;
+			Time.timeScale = 0.1f + timeScaleFactor;
 
 
 			hit = new RaycastHit ();
@@ -109,7 +112,7 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		else {
-			Time.timeScale = 0.75f;
+			Time.timeScale = 0.75f + timeScaleFactor;
 		
 		}
 	
