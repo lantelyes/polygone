@@ -5,6 +5,7 @@ public class Pentagon : Shape {
 
 	// Use this for initialization
 	void Start () {
+		sides = 5;
 	
 	}
 	

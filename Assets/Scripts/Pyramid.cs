@@ -5,6 +5,7 @@ public class Pyramid : Shape {
 
 	// Use this for initialization
 	void Start () {
+		sides = 3;
 	
 	}
 	
