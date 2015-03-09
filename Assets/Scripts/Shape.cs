@@ -15,7 +15,9 @@ public class Shape : MonoBehaviour {
 
 	public bool hasBeenSelected = false;
 
-	public Renderer rend;
+	Renderer rend;
+
+	public GameObject DestroyEffect;
 
 
 	Mesh shapeMesh;
@@ -30,9 +32,9 @@ public class Shape : MonoBehaviour {
 	}
 
 
-	public virtual void OnMouseOver() {
+	public virtual void OnDestroy() {
+		Instantiate(DestroyEffect, transform.position, transform.rotation);
 
-			
 	}
 
 	
