@@ -151,8 +151,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   KillY: 0
   hasBeenSelected: 0
-  rend: {fileID: 0}
-  DestroyEffect: {fileID: 138478, guid: 943d3d1e06bf04c868b5d6993bd84ffc, type: 2}
+  DestroyEffect: {fileID: 138478, guid: 3270a339251e846d3a0b454e1a5cabc2, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -10,8 +10,9 @@ GameObject:
   - 4: {fileID: 455482}
   - 198: {fileID: 19806358}
   - 199: {fileID: 19941454}
+  - 114: {fileID: 11411284}
   m_Layer: 0
-  m_Name: cube particles
+  m_Name: plane particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,6 +30,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11411284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cecaf90c1c114465ad275fe2dbebc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 0
 --- !u!198 &19806358
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1092,7 +1105,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
+  - {fileID: 2100000, guid: f71f3231f650d456a90cc16e7416ea52, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1114,7 +1127,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_SortMode: 0
-  m_Mesh: {fileID: 4300000, guid: 2587d17d7e6604e2da5f7cb932f7349d, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 82ca61cbe2fee4d06aac5a4128660964, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
