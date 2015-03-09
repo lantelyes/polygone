@@ -4,7 +4,8 @@ using System.Collections;
 public class Impairment : Pickup {
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
+		base.Start ();
 	
 	}
 	

@@ -4,7 +4,11 @@ using System.Collections;
 public class Plane : Shape {
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
+
+		sides = 2;
+
+		base.Start ();
 	
 	}
 	
