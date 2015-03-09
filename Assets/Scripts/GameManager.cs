@@ -24,8 +24,12 @@ public class GameManager : MonoBehaviour {
 
 	bool isChecking = false;
 
+	public Renderer rend;
+
 	// Use this for initialization
 	void Start () {
+
+
 		polys = new List<Shape> ();
 		Time.timeScale = 0.5f;
 	

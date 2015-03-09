@@ -4,8 +4,9 @@ using System.Collections;
 public class Pentagon : Shape {
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
 		sides = 5;
+		base.Start();
 	
 	}
 	

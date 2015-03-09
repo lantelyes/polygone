@@ -4,8 +4,10 @@ using System.Collections;
 public class Pyramid : Shape {
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
 		sides = 3;
+		base.Start ();
+
 	
 	}
 	

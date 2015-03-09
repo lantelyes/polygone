@@ -4,8 +4,9 @@ using System.Collections;
 public class Cube : Shape {
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
 		sides = 4;
+		base.Start();
 	
 	}
 	

@@ -15,21 +15,22 @@ public class Shape : MonoBehaviour {
 
 	public bool hasBeenSelected = false;
 
+	public Renderer rend;
 
 
 	Mesh shapeMesh;
 
 	// Use this for initialization
 
-	void Start () {
+	public virtual void Start () {
 
 		gameManager = GameObject.FindGameObjectWithTag ("manager");
-
+		rend = GetComponentsInChildren<MeshRenderer>()[0];
 	
 	}
 
 
-	public virtual void OnMouseOver(){
+	public virtual void OnMouseOver() {
 
 			
 	}
@@ -38,6 +39,12 @@ public class Shape : MonoBehaviour {
 	
 	// Update is called once per frame
 	public virtual void Update () {
+
+		if (hasBeenSelected) {
+			rend.material.color = new Color (255, 0, 0);
+		} else {
+			rend.material.color = new Color (0, 255, 0);
+		}
 
 
 		if (transform.position.y <= KillY) {
