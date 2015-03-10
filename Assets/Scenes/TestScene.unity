@@ -175,6 +175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5886d816f5a47348092a4d04898e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c1: {r: 1, g: .921568632, b: .0156862754, a: 1}
+  c2: {r: 1, g: 0, b: 0, a: 1}
+  lengthOfLineRenderer: 10
   rend: {fileID: 0}
 --- !u!4 &978550868
 Transform:

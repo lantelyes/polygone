@@ -22,12 +22,23 @@ public class GameManager : MonoBehaviour {
 	Ray pickRay;
 	RaycastHit hit;
 
+	public Color c1 = Color.yellow;
+	public Color c2 = Color.red;
+
 	bool isChecking = false;
+
+	public int lengthOfLineRenderer = 6;
 
 	public Renderer rend;
 
+	int r = 0;
+
 	// Use this for initialization
 	void Start () {
+		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
+		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+		lineRenderer.SetColors(c1, c2);
+		lineRenderer.SetWidth(0.2F, 0.2F);
 
 
 		polys = new List<Shape> ();
@@ -40,10 +51,19 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
 
+		LineRenderer lineRenderer = GetComponent<LineRenderer>();
+
 		Time.fixedDeltaTime = 0.02F * Time.timeScale;
 
 		pickRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
+		
+		lineRenderer.SetVertexCount (polys.Count);
+		while(r < polys.Count) {
+			lineRenderer.SetPosition(r,polys[r].gameObject.transform.position);
+			r++;
+		}
+		
 		if (Input.GetMouseButtonUp (0)) {
 			Time.timeScale = 0.75f + timeScaleFactor;
 			isChecking = false;
@@ -57,6 +77,8 @@ public class GameManager : MonoBehaviour {
 			}
 		
 			polys.Clear();
+			r=0;
+
 
 	
 		}
@@ -85,6 +107,9 @@ public class GameManager : MonoBehaviour {
 
 
 		if (isChecking) {
+
+	
+
 			Time.timeScale = 0.1f + timeScaleFactor;
 
 
