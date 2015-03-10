@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490626}
-  - 54: {fileID: 5462626}
   - 64: {fileID: 6446300}
   - 114: {fileID: 11415550}
   m_Layer: 0
@@ -92,21 +91,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190628}
   m_Mesh: {fileID: 4300000, guid: c72315c2ac469401594a4687f318ea9d, type: 3}
---- !u!54 &5462626
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190626}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!64 &6446300
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -148,6 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sides: 0
+  color: {r: 1, g: 0, b: 0, a: 0}
+  Speed: -.100000001
   gameManager: {fileID: 0}
   KillY: 0
   hasBeenSelected: 0

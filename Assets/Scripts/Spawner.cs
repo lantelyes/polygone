@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour {
 
@@ -16,6 +17,7 @@ public class Spawner : MonoBehaviour {
 	void Start () {
 
 		Invoke("Spawn", delay);
+
 			
 	}
 
@@ -24,12 +26,14 @@ public class Spawner : MonoBehaviour {
 
 		if(spawning) {
 
-			if(shapesToSpawn.Length-1 == shapeIndex)
-				shapeIndex = 0;
-			else 
-				shapeIndex++;
+//			if(shapesToSpawn.Length-1 == shapeIndex)
+//				shapeIndex = 0;
+//			else 
+//				shapeIndex++;
 
-			spawnPos = transform.position + new Vector3(Random.Range(-5,5),0,0);
+			shapeIndex = Random.Range(0,shapesToSpawn.Length);
+
+			spawnPos = transform.position;
 			
 
 			Instantiate (shapesToSpawn[shapeIndex], spawnPos, transform.rotation);

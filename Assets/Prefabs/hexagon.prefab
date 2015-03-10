@@ -27,7 +27,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 499150}
   - 64: {fileID: 6409954}
-  - 54: {fileID: 5474668}
   - 114: {fileID: 11432882}
   m_Layer: 0
   m_Name: hexagon
@@ -92,21 +91,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199148}
   m_Mesh: {fileID: 4300000, guid: 69b074899f2cb413fbede3d368b51351, type: 3}
---- !u!54 &5474668
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199150}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!64 &6409954
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -148,6 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sides: 0
+  color: {r: 1, g: 1, b: 0, a: 0}
+  Speed: -.100000001
   gameManager: {fileID: 0}
   KillY: 0
   hasBeenSelected: 0

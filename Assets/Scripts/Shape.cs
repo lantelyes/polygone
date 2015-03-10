@@ -6,7 +6,10 @@ public class Shape : MonoBehaviour {
 
 
 	public int sides;
-	Color color;
+	public Color color;
+	public float Speed = -0.1f;
+	float SloMoSpeed;
+
 
 	public GameObject gameManager;
 
@@ -16,11 +19,16 @@ public class Shape : MonoBehaviour {
 	public bool hasBeenSelected = false;
 
 	Renderer rend;
+	bool isSloMo = false;
 
 	public GameObject DestroyEffect;
 
 
 	Mesh shapeMesh;
+
+	public void SlowDown(bool sloMo){
+		isSloMo = sloMo;
+	}
 
 	// Use this for initialization
 
@@ -28,9 +36,9 @@ public class Shape : MonoBehaviour {
 
 		gameManager = GameObject.FindGameObjectWithTag ("manager");
 		rend = GetComponentsInChildren<MeshRenderer>()[0];
+		rend.material.color = color;
 	
 	}
-
 
 
 
@@ -40,10 +48,18 @@ public class Shape : MonoBehaviour {
 	// Update is called once per frame
 	public virtual void Update () {
 
+		SloMoSpeed = Speed / 10.0f;
+
 		if (hasBeenSelected) {
 			rend.material.color = new Color (255, 0, 0);
 		} else {
-			rend.material.color = new Color (0, 255, 0);
+			rend.material.color = color;
+		}
+
+		if (!isSloMo) {
+			transform.position = transform.position + new Vector3 (0, Speed, 0);
+		} else {
+			transform.position = transform.position + new Vector3 (0, SloMoSpeed, 0);
 		}
 
 

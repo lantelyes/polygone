@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour {
 
 	public Renderer rend;
 
+	public Shape[] shapes;
+
 	int r = 0;
 
 	// Use this for initialization
@@ -51,9 +53,11 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
 
+		shapes = GameObject.FindObjectsOfType<Shape> ();
+
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 
-		Time.fixedDeltaTime = 0.02F * Time.timeScale;
+		//Time.fixedDeltaTime = 0.02F * Time.timeScale;
 
 		pickRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
@@ -110,8 +114,10 @@ public class GameManager : MonoBehaviour {
 		if (isChecking) {
 
 	
-
-			Time.timeScale = 0.1f + timeScaleFactor;
+			for(int i = 0; i< shapes.Length; i++) {
+				shapes[i].SendMessage("SlowDown",true);
+			}
+			//Time.timeScale = 0.1f + timeScaleFactor;
 
 
 			hit = new RaycastHit ();
@@ -144,8 +150,11 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		else {
-			Time.timeScale = 0.75f + timeScaleFactor;
-		
+			//Time.timeScale = 0.75f + timeScaleFactor;
+			for(int i = 0; i< shapes.Length; i++) {
+				shapes[i].SendMessage("SlowDown",false);
+			}
+			
 		}
 	
 	}
