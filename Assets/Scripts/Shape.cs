@@ -32,10 +32,8 @@ public class Shape : MonoBehaviour {
 	}
 
 
-	public virtual void OnDestroy() {
-		Instantiate(DestroyEffect, transform.position, transform.rotation);
 
-	}
+
 
 	
 	

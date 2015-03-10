@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour {
 			lineRenderer.SetPosition(r,polys[r].gameObject.transform.position);
 			r++;
 		}
+		r = 0;
 		
 		if (Input.GetMouseButtonUp (0)) {
 			Time.timeScale = 0.75f + timeScaleFactor;
@@ -128,6 +129,8 @@ public class GameManager : MonoBehaviour {
 			if (polys.Count == sidesNeeded) {
 
 				for (int i = 0; i < polys.Count; i++) {
+
+					Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position, polys[i].gameObject.transform.rotation);
 
 					Destroy (polys [i].gameObject);
 			
