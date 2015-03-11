@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sides: 0
   color: {r: 0, g: 1, b: 0, a: 0}
+  Speed: -5
   gameManager: {fileID: 0}
   KillY: 0
   hasBeenSelected: 0

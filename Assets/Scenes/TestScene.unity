@@ -117,9 +117,10 @@ MonoBehaviour:
   shapesToSpawn:
   - {fileID: 190626, guid: cd480fd9898bb46ebac8c38505f252ee, type: 2}
   - {fileID: 118000, guid: 978a907f8c0a74585a9652c934eb84b9, type: 2}
-  - {fileID: 199150, guid: ca92646ca522347cc947cd4d5505d1a5, type: 2}
+  - {fileID: 182164, guid: 16761ff38058d4eb8a69a46e85609257, type: 2}
   - {fileID: 190778, guid: 59a87ce4613a04767b5487e5f10a9520, type: 2}
-  delay: .25
+  delay: .349999994
+  sloMoDelay: 5
   spawning: 1
 --- !u!4 &202486657
 Transform:
@@ -223,9 +224,10 @@ MonoBehaviour:
   shapesToSpawn:
   - {fileID: 190626, guid: cd480fd9898bb46ebac8c38505f252ee, type: 2}
   - {fileID: 118000, guid: 978a907f8c0a74585a9652c934eb84b9, type: 2}
-  - {fileID: 199150, guid: ca92646ca522347cc947cd4d5505d1a5, type: 2}
+  - {fileID: 182164, guid: 16761ff38058d4eb8a69a46e85609257, type: 2}
   - {fileID: 190778, guid: 59a87ce4613a04767b5487e5f10a9520, type: 2}
-  delay: .25
+  delay: .349999994
+  sloMoDelay: 5
   spawning: 1
 --- !u!4 &734946319
 Transform:
@@ -325,9 +327,10 @@ MonoBehaviour:
   shapesToSpawn:
   - {fileID: 190626, guid: cd480fd9898bb46ebac8c38505f252ee, type: 2}
   - {fileID: 118000, guid: 978a907f8c0a74585a9652c934eb84b9, type: 2}
-  - {fileID: 199150, guid: ca92646ca522347cc947cd4d5505d1a5, type: 2}
+  - {fileID: 182164, guid: 16761ff38058d4eb8a69a46e85609257, type: 2}
   - {fileID: 190778, guid: 59a87ce4613a04767b5487e5f10a9520, type: 2}
-  delay: .25
+  delay: .349999994
+  sloMoDelay: 5
   spawning: 1
 --- !u!1 &1170081616
 GameObject:
@@ -359,9 +362,10 @@ MonoBehaviour:
   shapesToSpawn:
   - {fileID: 190626, guid: cd480fd9898bb46ebac8c38505f252ee, type: 2}
   - {fileID: 118000, guid: 978a907f8c0a74585a9652c934eb84b9, type: 2}
-  - {fileID: 199150, guid: ca92646ca522347cc947cd4d5505d1a5, type: 2}
+  - {fileID: 182164, guid: 16761ff38058d4eb8a69a46e85609257, type: 2}
   - {fileID: 190778, guid: 59a87ce4613a04767b5487e5f10a9520, type: 2}
-  delay: .25
+  delay: .349999994
+  sloMoDelay: 5
   spawning: 1
 --- !u!4 &1170081618
 Transform:
@@ -489,9 +493,10 @@ MonoBehaviour:
   shapesToSpawn:
   - {fileID: 190626, guid: cd480fd9898bb46ebac8c38505f252ee, type: 2}
   - {fileID: 118000, guid: 978a907f8c0a74585a9652c934eb84b9, type: 2}
-  - {fileID: 199150, guid: ca92646ca522347cc947cd4d5505d1a5, type: 2}
+  - {fileID: 182164, guid: 16761ff38058d4eb8a69a46e85609257, type: 2}
   - {fileID: 190778, guid: 59a87ce4613a04767b5487e5f10a9520, type: 2}
-  delay: .25
+  delay: .349999994
+  sloMoDelay: 5
   spawning: 1
 --- !u!4 &1766908955
 Transform:

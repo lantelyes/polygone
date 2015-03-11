@@ -57,9 +57,11 @@ public class Shape : MonoBehaviour {
 		}
 
 		if (!isSloMo) {
-			transform.position = transform.position + new Vector3 (0, Speed, 0);
+			Time.timeScale = 1.0f;
+			transform.position = transform.position + new Vector3 (0, Speed * Time.deltaTime, 0);
 		} else {
-			transform.position = transform.position + new Vector3 (0, SloMoSpeed, 0);
+			Time.timeScale = .5f;
+			transform.position = transform.position + new Vector3 (0, Speed * Time.deltaTime, 0);
 		}
 
 

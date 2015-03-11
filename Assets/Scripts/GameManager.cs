@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
+	
 
-
-	float timeScaleFactor = 0.001f;
 
 
 	float levelSpeed;
+
+	float oldDelay;
 
 	int curLevel;
 
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour {
 
 
 		polys = new List<Shape> ();
-		Time.timeScale = 0.5f;
+
 	
 	}
 
@@ -57,7 +58,6 @@ public class GameManager : MonoBehaviour {
 
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 
-		//Time.fixedDeltaTime = 0.02F * Time.timeScale;
 
 		pickRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
@@ -70,7 +70,6 @@ public class GameManager : MonoBehaviour {
 		r = 0;
 		
 		if (Input.GetMouseButtonUp (0)) {
-			Time.timeScale = 0.75f + timeScaleFactor;
 			isChecking = false;
 
 			for (int i = 0; i < polys.Count; i++) {
@@ -113,11 +112,10 @@ public class GameManager : MonoBehaviour {
 
 		if (isChecking) {
 
-	
 			for(int i = 0; i< shapes.Length; i++) {
 				shapes[i].SendMessage("SlowDown",true);
 			}
-			//Time.timeScale = 0.1f + timeScaleFactor;
+	
 
 
 			hit = new RaycastHit ();
@@ -150,10 +148,12 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		else {
-			//Time.timeScale = 0.75f + timeScaleFactor;
+
 			for(int i = 0; i< shapes.Length; i++) {
 				shapes[i].SendMessage("SlowDown",false);
+
 			}
+
 			
 		}
 	

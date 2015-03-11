@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour {
 
 	public GameObject[] shapesToSpawn;
 	public float delay = 5;
+	public float sloMoDelay = 5;
 	public bool spawning = false;
 	private int shapeIndex = 0;
 	private Vector3 spawnPos;
@@ -16,7 +17,8 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		Invoke("Spawn", delay);
+		Invoke("Spawn", delay * Time.deltaTime);
+		//sloMoDelay = delay * 10.0f;
 
 			
 	}
