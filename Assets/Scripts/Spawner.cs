@@ -18,7 +18,6 @@ public class Spawner : MonoBehaviour {
 	void Start () {
 
 		Invoke("Spawn", delay * Time.deltaTime);
-		//sloMoDelay = delay * 10.0f;
 
 			
 	}

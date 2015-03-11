@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 	
 
 
+	GameObject ScoreText;
+	TextMesh scoreTextMesh;
 
 	float levelSpeed;
 
@@ -13,9 +15,9 @@ public class GameManager : MonoBehaviour {
 
 	int curLevel;
 
-	int highScore;
+	public int highScore;
 
-	int score;
+	public int score;
 
 	List<Shape> polys;
 	int sidesNeeded;
@@ -45,6 +47,10 @@ public class GameManager : MonoBehaviour {
 
 
 		polys = new List<Shape> ();
+
+		ScoreText = GameObject.FindGameObjectWithTag ("scoretext");
+		scoreTextMesh = ScoreText.GetComponent<TextMesh> ();
+
 
 	
 	}
@@ -151,6 +157,7 @@ public class GameManager : MonoBehaviour {
 
 			for(int i = 0; i< shapes.Length; i++) {
 				shapes[i].SendMessage("SlowDown",false);
+
 
 			}
 
