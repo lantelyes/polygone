@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
 
+		scoreTextMesh.text = "Score: " + score; 
+
 		shapes = GameObject.FindObjectsOfType<Shape> ();
 
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
