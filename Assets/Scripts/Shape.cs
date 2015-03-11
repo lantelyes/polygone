@@ -43,7 +43,7 @@ public class Shape : MonoBehaviour {
 
 		rend = GetComponentsInChildren<MeshRenderer>()[0];
 		rend.material.color = color;
-		scoreTextMesh = ScoreText.GetComponent<TextMesh> ();
+
 
 		gm = gameManager.GetComponent<GameManager> ();
 
