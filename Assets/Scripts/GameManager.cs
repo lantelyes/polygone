@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+		lineRenderer.material = new Material(Shader.Find("Particles/Multiply"));
 		lineRenderer.SetColors(c1, c2);
 		lineRenderer.SetWidth(0.2F, 0.2F);
 
