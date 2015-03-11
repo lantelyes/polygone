@@ -16,9 +16,5 @@ public class Cube : Shape {
 		base.Update ();
 	
 	}
-	public override void OnDestroy () {
-		
-		base.OnDestroy();
-		
-	}
+
 }

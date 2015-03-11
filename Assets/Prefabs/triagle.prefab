@@ -70,7 +70,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 85873e5a65af640cca6cc323a8926cfe, type: 2}
+  - {fileID: 2100000, guid: 4c761826e5eea4b119c4974fe7696ab5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -131,11 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afca5081c0d14477b89c789a423ebb22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreText: {fileID: 0}
   sides: 0
   color: {r: 1, g: .600000024, b: 0, a: 0}
   Speed: -5
   gameManager: {fileID: 0}
-  KillY: 0
+  KillY: -10
   hasBeenSelected: 0
   DestroyEffect: {fileID: 138478, guid: 1515965606007487c93549e7c024b15b, type: 2}
 --- !u!1001 &100100000

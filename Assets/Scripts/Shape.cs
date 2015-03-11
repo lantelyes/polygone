@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Shape : MonoBehaviour {
 
-	public GameObject ScoreText;
+
 
 	public int sides;
 	public Color color;
@@ -12,7 +12,6 @@ public class Shape : MonoBehaviour {
 
 
 	public GameObject gameManager;
-	private TextMesh scoreTextMesh;
 
 
 	public float KillY;
@@ -38,20 +37,19 @@ public class Shape : MonoBehaviour {
 	public virtual void Start () {
 
 		gameManager = GameObject.FindGameObjectWithTag ("manager");
-		ScoreText = GameObject.FindGameObjectWithTag ("scoretext");
+
 
 
 		rend = GetComponentsInChildren<MeshRenderer>()[0];
 		rend.material.color = color;
 
 
-		gm = gameManager.GetComponent<GameManager> ();
 
 	}
 
-	public virtual void OnDestroy () {
+	public virtual void OnExplode () {
 
-		gm.score += sides;
+	
 	}
 
 
@@ -80,7 +78,7 @@ public class Shape : MonoBehaviour {
 
 
 		if (transform.position.y <= KillY) {
-			//Destroy(gameObject);
+			Destroy(gameObject);
 
 		}
 	

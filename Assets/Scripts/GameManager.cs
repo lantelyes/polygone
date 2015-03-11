@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 	GameObject ScoreText;
 	TextMesh scoreTextMesh;
 
+	public Shader lineShader;
+
 	float levelSpeed;
 
 	float oldDelay;
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Multiply"));
+		lineRenderer.material = new Material(lineShader);
 		lineRenderer.SetColors(c1, c2);
 		lineRenderer.SetWidth(0.2F, 0.2F);
 
@@ -96,7 +98,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 
-		if(Input.GetMouseButtonDown(0) && !isChecking) {
+		if(Input.GetMouseButtonDown(0) && !isChecking ) {
 			hit = new RaycastHit ();
 			
 			if (Physics.Raycast (pickRay, out hit, 10000.0f)) {
@@ -140,16 +142,25 @@ public class GameManager : MonoBehaviour {
 			}
 			if (polys.Count == sidesNeeded) {
 
+
+				score += polys[0].sides;
+				
 				for (int i = 0; i < polys.Count; i++) {
 
 					Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position, polys[i].gameObject.transform.rotation);
 
+				
+
 					Destroy (polys [i].gameObject);
+
+
 			
 
 
 				}
 
+			
+				               
 				polys.Clear ();
 				isChecking = false;
 			

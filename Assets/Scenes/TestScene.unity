@@ -347,7 +347,6 @@ GameObject:
   - 92: {fileID: 1571315358}
   - 124: {fileID: 1571315357}
   - 81: {fileID: 1571315356}
-  - 23: {fileID: 1571315361}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -420,30 +419,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!23 &1571315361
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1571315355}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!1 &1766908953
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5886d816f5a47348092a4d04898e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineShader: {fileID: 10723, guid: 0000000000000000f000000000000000, type: 0}
   highScore: 0
   score: 0
   c1: {r: 1, g: .921568632, b: .0156862754, a: 1}
