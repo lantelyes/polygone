@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour {
 				sidesNeeded = poly.sides;
 
 				poly.hasBeenSelected = true;
+				poly.isFirst = true;
 
 				polys.Add(poly);
 				isChecking = true;
@@ -131,7 +132,7 @@ public class GameManager : MonoBehaviour {
 			hit = new RaycastHit ();
 			if (Physics.Raycast (pickRay, out hit, 10000.0f)) {
 				Shape poly = (Shape)hit.collider.gameObject.GetComponent<Shape> ();
-				if (!poly.hasBeenSelected) {
+				if (!poly.hasBeenSelected && polys.Count != sidesNeeded) {
 					if (poly.sides == sidesNeeded) {
 
 						poly.hasBeenSelected = true;
@@ -139,8 +140,16 @@ public class GameManager : MonoBehaviour {
 
 					}
 				}
+				if(polys.Count == sidesNeeded && poly.isFirst) {
+					poly.hasBeenSelected = true;
+					polys.Add (poly);
+					
+				}
 			}
-			if (polys.Count == sidesNeeded) {
+
+		
+
+			if (polys.Count == sidesNeeded + 1 ) {
 
 
 				score += polys[0].sides;

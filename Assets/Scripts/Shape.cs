@@ -17,6 +17,7 @@ public class Shape : MonoBehaviour {
 	public float KillY;
 
 	public bool hasBeenSelected = false;
+	public bool isFirst = false;
 
 	Renderer rend;
 	bool isSloMo = false;
