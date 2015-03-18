@@ -11,7 +11,7 @@ public class Shape : MonoBehaviour {
 	float SloMoSpeed;
 
 
-	public GameObject gameManager;
+	public GameManager gameManager;
 
 
 	public float KillY;
@@ -37,7 +37,7 @@ public class Shape : MonoBehaviour {
 
 	public virtual void Start () {
 
-		gameManager = GameObject.FindGameObjectWithTag ("manager");
+		gameManager = GameObject.FindGameObjectWithTag ("manager").GetComponent<GameManager>();
 
 
 
@@ -79,6 +79,9 @@ public class Shape : MonoBehaviour {
 
 
 		if (transform.position.y <= KillY) {
+			if(hasBeenSelected) {
+				gameManager.Reset();
+			}
 			Destroy(gameObject);
 
 		}

@@ -24,13 +24,14 @@ public class GameManager : MonoBehaviour {
 	List<Shape> polys;
 	int sidesNeeded;
 
+
 	Ray pickRay;
 	RaycastHit hit;
 
 	public Color c1 = Color.yellow;
 	public Color c2 = Color.red;
 
-	bool isChecking = false;
+	public bool isChecking = false;
 
 	public int lengthOfLineRenderer = 6;
 
@@ -57,6 +58,27 @@ public class GameManager : MonoBehaviour {
 	
 	}
 
+
+	public void Reset() {
+
+
+		for (int i = 0; i < polys.Count; i++) {
+			
+			polys [i].hasBeenSelected = false;
+			
+			
+			
+		}
+		
+		
+		
+		polys.Clear ();
+		isChecking = false;
+
+
+		print ("reset");
+
+	}
 
 
 	
@@ -98,7 +120,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 
-		if(Input.GetMouseButtonDown(0) && !isChecking ) {
+		if(Input.GetMouseButtonDown(0) && !isChecking) {
 			hit = new RaycastHit ();
 			
 			if (Physics.Raycast (pickRay, out hit, 10000.0f)) {
