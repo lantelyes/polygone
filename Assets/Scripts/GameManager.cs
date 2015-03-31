@@ -7,15 +7,17 @@ public class GameManager : MonoBehaviour {
 
 
 
-	public Texture level1;
-	public Texture level2;
-	public Texture level3;
-	public Texture level4;
-	public Texture level5;
+	public Material level12;
+	public Material level23;
+	public Material level34;
+	public Material level45;
+
+	public List<Material> levelsMats; 
+
 
 	GameObject ScoreText;
 	GameObject SkyObject;
-	Material skyMat;
+	Renderer skyRend;
 	TextMesh scoreTextMesh;
 
 	public Shader lineShader;
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour {
 	float oldDelay;
 
 	public int highScore;
+
 
 	float fadeSpeed = 10.0f;
 	float start = 0.0f;
@@ -67,6 +70,11 @@ public class GameManager : MonoBehaviour {
 		lineRenderer.SetColors(c1, c2);
 		lineRenderer.SetWidth(0.2F, 0.2F);
 
+		levelsMats = new List<Material>();
+		levelsMats.Add (level12);
+		levelsMats.Add (level23);
+		levelsMats.Add (level34);
+		levelsMats.Add (level45);
 
 		polys = new List<Shape> ();
 
@@ -75,7 +83,7 @@ public class GameManager : MonoBehaviour {
 
 
 		SkyObject = GameObject.FindGameObjectWithTag ("sky");
-		skyMat = SkyObject.GetComponent<Renderer> ().material;
+		skyRend = SkyObject.GetComponent<Renderer> ();
 
 
 	
@@ -104,9 +112,8 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
 
-		print("Fade: " +fade);
-		print("start: " +start);
-		print ("end: " + end);
+
+
 
 		streakExpireTime -= Time.deltaTime;
 
@@ -117,31 +124,27 @@ public class GameManager : MonoBehaviour {
 
 		if (currentStreak == streaksNeeded) {
 			fading = true;
-		
 
-		
 		}
 
-		if (fading || (fade < 1.0f && fade > 0.0f)) {
+		if (fading) {
 			fade = Mathf.Clamp (fade + Time.deltaTime * 10.0f, 0, 1);
-			skyMat.SetFloat("_Blend",Mathf.Lerp(start,end,fade));
+			skyRend.material.SetFloat("_Blend",Mathf.Lerp(0.0f,1.0f,fade));
+		
+		
 		}
 
-		if (fade == 1.0f && fading) {
-			fadeSpeed = -fadeSpeed;
-			start = 1.0f;
-			end = 0.0f;
-			currentStreak = 0;
+		if (fade == 1.0f) {
+			currentLevel++;
+			skyRend.material = levelsMats [currentLevel-1];
+			skyRend.material.SetFloat("_Blend",0.0f);
+			print("new level");
+			fade = 0.0f;
 			fading = false;
+			currentStreak = 0;
 		}
 
-		if (fade == 0.0f && fading) {
-			fadeSpeed = -fadeSpeed;
-			start = 0.0f;
-			end = 1.0f;
-			currentStreak = 0;
-			fading = false;
-		}
+
 
 			
 		scoreTextMesh.text = "Score: " + score * 3000 + "\nStreak: " + currentStreak; 
