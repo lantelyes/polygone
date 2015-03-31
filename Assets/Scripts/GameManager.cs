@@ -6,20 +6,39 @@ public class GameManager : MonoBehaviour {
 	
 
 
+
+	public Texture level1;
+	public Texture level2;
+	public Texture level3;
+	public Texture level4;
+	public Texture level5;
+
 	GameObject ScoreText;
+	GameObject SkyObject;
+	Material skyMat;
 	TextMesh scoreTextMesh;
 
 	public Shader lineShader;
 
 	float levelSpeed;
 
-	float oldDelay;
 
-	int curLevel;
+	float oldDelay;
 
 	public int highScore;
 
+	float fadeSpeed = 10.0f;
+	float start = 0.0f;
+	float end = 1.0f;
+	public float fade = 0.0f;
+	bool fading = false;
+
 	public int score;
+	public int currentLevel = 1;
+	public int streaksNeeded = 1;
+	public int currentStreak;
+	public int topStreak;
+	public float streakExpireTime = 3.0f;
 
 	List<Shape> polys;
 	int sidesNeeded;
@@ -55,6 +74,10 @@ public class GameManager : MonoBehaviour {
 		scoreTextMesh = ScoreText.GetComponent<TextMesh> ();
 
 
+		SkyObject = GameObject.FindGameObjectWithTag ("sky");
+		skyMat = SkyObject.GetComponent<Renderer> ().material;
+
+
 	
 	}
 
@@ -65,9 +88,6 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < polys.Count; i++) {
 			
 			polys [i].hasBeenSelected = false;
-			
-			
-			
 		}
 		
 		
@@ -76,7 +96,7 @@ public class GameManager : MonoBehaviour {
 		isChecking = false;
 
 
-		print ("reset");
+	
 
 	}
 
@@ -84,7 +104,47 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
 
-		scoreTextMesh.text = "Score: " + score; 
+		print("Fade: " +fade);
+		print("start: " +start);
+		print ("end: " + end);
+
+		streakExpireTime -= Time.deltaTime;
+
+		if (streakExpireTime < 0) {
+			streakExpireTime = 3.0f;
+			currentStreak = 0;
+		}
+
+		if (currentStreak == streaksNeeded) {
+			fading = true;
+		
+
+		
+		}
+
+		if (fading || (fade < 1.0f && fade > 0.0f)) {
+			fade = Mathf.Clamp (fade + Time.deltaTime * 10.0f, 0, 1);
+			skyMat.SetFloat("_Blend",Mathf.Lerp(start,end,fade));
+		}
+
+		if (fade == 1.0f && fading) {
+			fadeSpeed = -fadeSpeed;
+			start = 1.0f;
+			end = 0.0f;
+			currentStreak = 0;
+			fading = false;
+		}
+
+		if (fade == 0.0f && fading) {
+			fadeSpeed = -fadeSpeed;
+			start = 0.0f;
+			end = 1.0f;
+			currentStreak = 0;
+			fading = false;
+		}
+
+			
+		scoreTextMesh.text = "Score: " + score * 3000 + "\nStreak: " + currentStreak; 
 
 		shapes = GameObject.FindObjectsOfType<Shape> ();
 
@@ -107,8 +167,7 @@ public class GameManager : MonoBehaviour {
 			for (int i = 0; i < polys.Count; i++) {
 				
 				polys [i].hasBeenSelected = false;
-				
-				
+							
 				
 			}
 		
@@ -183,15 +242,18 @@ public class GameManager : MonoBehaviour {
 				
 
 					Destroy (polys [i].gameObject);
-
-
-			
+		
 
 
 				}
 
 			
-				               
+				currentStreak +=1;
+				streakExpireTime = 3.0f;
+				if(topStreak < 	currentStreak) {
+					topStreak = currentStreak;
+				}
+
 				polys.Clear ();
 				isChecking = false;
 			
@@ -201,7 +263,6 @@ public class GameManager : MonoBehaviour {
 
 			for(int i = 0; i< shapes.Length; i++) {
 				shapes[i].SendMessage("SlowDown",false);
-
 
 			}
 
