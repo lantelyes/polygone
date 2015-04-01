@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Plane_Particle_System
-  m_Shader: {fileID: 4800000, guid: f707b563773694b618fcba1cdc5f0da6, type: 3}
+  m_Name: New Material 1
+  m_Shader: {fileID: 4800000, guid: d30cb95f16b58412a987563a89f9bb03, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -84,13 +84,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ToonShade
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -147,7 +140,7 @@ Material:
       data:
         first:
           name: _Outline
-        second: .00499999989
+        second: .00800000038
     m_Colors:
       data:
         first:
@@ -156,7 +149,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .270588249, g: .509803951, b: .764705896, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _EmissionColorUI

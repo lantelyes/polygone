@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e4cdb14e9acca4f1ca68acd5500f0bf1
-timeCreated: 1426705308
+guid: cd54b11fa38b648b4a0e17eb4785f79d
+timeCreated: 1427917432
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pPlane1
+    4300000: pCube1
   materials:
     importMaterials: 1
     materialName: 0
@@ -37,7 +37,7 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
+    keepQuads: 1
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
@@ -45,7 +45,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 120
+    normalSmoothAngle: 100
     splitTangentsAcrossUV: 1
     normalImportMode: 1
     tangentImportMode: 1
