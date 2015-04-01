@@ -8,8 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490626}
-  - 64: {fileID: 6446300}
   - 114: {fileID: 11415550}
+  - 65: {fileID: 6574112}
   m_Layer: 0
   m_Name: Pentagon
   m_TagString: Untagged
@@ -91,8 +91,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190628}
   m_Mesh: {fileID: 4300000, guid: efb6399ff4e7e435d81ffe77ba09b36a, type: 3}
---- !u!64 &6446300
-MeshCollider:
+--- !u!65 &6574112
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -101,8 +101,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: efb6399ff4e7e435d81ffe77ba09b36a, type: 3}
+  m_Size: {x: 2, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9590628
 Animator:
   serializedVersion: 3
