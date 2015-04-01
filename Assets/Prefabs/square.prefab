@@ -90,7 +90,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182162}
-  m_Mesh: {fileID: 4300000, guid: 2587d17d7e6604e2da5f7cb932f7349d, type: 3}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &6456298
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -102,7 +102,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 2587d17d7e6604e2da5f7cb932f7349d, type: 3}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!95 &9582162
 Animator:
   serializedVersion: 3
@@ -137,6 +137,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   KillY: -10
   hasBeenSelected: 0
+  isFirst: 0
   DestroyEffect: {fileID: 138478, guid: 943d3d1e06bf04c868b5d6993bd84ffc, type: 2}
 --- !u!1001 &100100000
 Prefab:
