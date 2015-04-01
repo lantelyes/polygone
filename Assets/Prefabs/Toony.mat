@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Toony
-  m_Shader: {fileID: 4800000, guid: 61c6b082f18374e24aa5de6dfada95f4, type: 3}
+  m_Shader: {fileID: 4800000, guid: f7585b794f23947058fbf027ac7e7ebb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -84,6 +84,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ToonShade
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -137,6 +144,10 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Outline
+        second: .00499999989
     m_Colors:
       data:
         first:
@@ -150,3 +161,7 @@ Material:
         first:
           name: _EmissionColorUI
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: 0, b: 0, a: 1}
