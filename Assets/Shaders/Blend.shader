@@ -9,6 +9,7 @@
   }
   SubShader
   {
+  	Lighting Off
     Tags { "RenderType"="Opaque" }
     LOD 300
     Pass
@@ -22,12 +23,21 @@
     }
   
     CGPROGRAM
-    #pragma surface surf Lambert
+    #pragma surface surf Unlit
+    
     
     sampler2D _MainTex;
     sampler2D _Texture2;
     fixed4 _Color;
     float _Blend;
+    
+    
+    half4 LightingUnlit (SurfaceOutput s, half3 lightDir, half atten) {
+    	half4 c;
+    	c.rgb = s.Albedo;
+        c.a = s.Alpha;
+        return c;
+    }
     
     struct Input
     {

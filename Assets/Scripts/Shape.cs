@@ -64,6 +64,14 @@ public class Shape : MonoBehaviour {
 	public virtual void Update () {
 
 
+		if (isFirst && hasBeenSelected) {
+			transform.Rotate(0,5,0);
+		}
+		if (!hasBeenSelected) {
+			transform.rotation = Quaternion.identity;
+		}
+
+
 
 		if (hasBeenSelected) {
 			rend.material.color = new Color (255, 0, 0);

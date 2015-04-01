@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
 	public int numPolysDestroyed = 0;
 
 
-	float fadeSpeed = 10.0f;
+	float fadeSpeed = 1.0f;
 	float start = 0.0f;
 	float end = 1.0f;
 	public float fade = 0.0f;
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (fading) {
-			fade = Mathf.Clamp (fade + Time.deltaTime * 10.0f, 0, 1);
+			fade = Mathf.Clamp (fade + Time.deltaTime * fadeSpeed, 0, 1);
 			skyRend.material.SetFloat("_Blend",Mathf.Lerp(0.0f,1.0f,fade));
 		
 		
@@ -147,7 +147,6 @@ public class GameManager : MonoBehaviour {
 			currentLevel++;
 			skyRend.material = levelsMats [currentLevel-1];
 			skyRend.material.SetFloat("_Blend",0.0f);
-			print("new level");
 			fade = 0.0f;
 			fading = false;
 			currentStreak = 0;
@@ -165,7 +164,7 @@ public class GameManager : MonoBehaviour {
 		
 		
 		//scoreTextMesh.text = "Score: " + score * 3000 + "\nStreak: " + currentStreak; 
-		scoreTextMesh.text = "Score: " + score * 3000 + "\nPoly: " + numPolysDestroyed; 
+		scoreTextMesh.text = "Score: " + score * 3000 + "\nPolys: " + numPolysDestroyed; 
 
 		shapes = GameObject.FindObjectsOfType<Shape> ();
 
@@ -261,6 +260,8 @@ public class GameManager : MonoBehaviour {
 				numPolysDestroyed += polys.Count - 1;
 				
 				for (int i = 0; i < polys.Count; i++) {
+
+					polys[i].transform.rotation = Quaternion.identity;
 
 					Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position, polys[i].gameObject.transform.rotation);
 
