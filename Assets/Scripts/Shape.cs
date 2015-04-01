@@ -7,7 +7,6 @@ public class Shape : MonoBehaviour {
 
 	public int sides;
 	public Color color;
-	public Color outlineColor;
 	public float Speed = -0.1f;
 
 
@@ -44,7 +43,6 @@ public class Shape : MonoBehaviour {
 
 		rend = GetComponentsInChildren<MeshRenderer>()[0];
 		rend.material.color = color;
-		rend.material.SetColor ("_OutlineColor", outlineColor);
 
 
 

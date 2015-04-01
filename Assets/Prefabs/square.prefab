@@ -71,10 +71,14 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 2100000, guid: a868229edf1bc40eb938e3cc9fb9d80a, type: 2}
 =======
   - {fileID: 2100000, guid: 316ea0c567e4e49e8b9c7775d74eff5e, type: 2}
 >>>>>>> origin/master
+=======
+  - {fileID: 2100000, guid: 4c761826e5eea4b119c4974fe7696ab5, type: 2}
+>>>>>>> parent of c4ce81a... Changes to materials and things
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -136,8 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sides: 0
-  color: {r: .450980395, g: .800000012, b: .811764717, a: 1}
-  outlineColor: {r: .956862748, g: .474509805, b: .368627459, a: 1}
+  color: {r: 0, g: 1, b: 0, a: 0}
   Speed: -5
   gameManager: {fileID: 0}
   KillY: -10
