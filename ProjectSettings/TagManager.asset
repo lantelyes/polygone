@@ -6,6 +6,7 @@ TagManager:
   tags:
   - manager
   - scoretext
+  - sky
   layers:
   - Default
   - TransparentFX

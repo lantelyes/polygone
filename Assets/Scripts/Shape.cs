@@ -8,7 +8,7 @@ public class Shape : MonoBehaviour {
 	public int sides;
 	public Color color;
 	public float Speed = -0.1f;
-	float SloMoSpeed;
+
 
 
 	public GameManager gameManager;
@@ -61,7 +61,8 @@ public class Shape : MonoBehaviour {
 	// Update is called once per frame
 	public virtual void Update () {
 
-		SloMoSpeed = Speed / 10.0f;
+		//Speed -= 0.0001f;
+
 
 		if (hasBeenSelected) {
 			rend.material.color = new Color (255, 0, 0);
