@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3382162}
   - 23: {fileID: 2382162}
   - 95: {fileID: 9582162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 482164}
   - 114: {fileID: 11489622}
   - 65: {fileID: 6579010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

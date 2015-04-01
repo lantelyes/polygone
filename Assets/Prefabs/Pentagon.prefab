@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 490626}
   - 114: {fileID: 11415550}
   - 65: {fileID: 6574112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pentagon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 33: {fileID: 3390628}
   - 23: {fileID: 2390628}
   - 95: {fileID: 9590628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pentagone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -23,7 +23,7 @@ inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 	lightDir = normalize(lightDir);
 	#endif
 	
-	half d = dot (s.Normal, lightDir)*0.5 + 0.5;
+	half d = (dot (s.Normal, lightDir)*0.5 + 0.5) * atten; //MOD
 	half3 ramp = tex2D (_Ramp, float2(d,d)).rgb;
 	
 	half4 c;

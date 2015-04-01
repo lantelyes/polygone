@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3390776}
   - 23: {fileID: 2390776}
   - 95: {fileID: 9590776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 490778}
   - 114: {fileID: 11431872}
   - 65: {fileID: 6517850}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: triagle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
