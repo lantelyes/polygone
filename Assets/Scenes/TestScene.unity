@@ -165,7 +165,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -564,9 +564,9 @@ MonoBehaviour:
   - -5
   - -5
   - -5
-  levelsMats: []
   lineShader: {fileID: 10708, guid: 0000000000000000f000000000000000, type: 0}
   highScore: 0
+  numPolysDestroyed: 0
   fade: 0
   score: 0
   currentLevel: 1

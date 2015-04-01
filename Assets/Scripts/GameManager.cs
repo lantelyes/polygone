@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 
 	public List<float> levelSpeeds;
 
-	public List<Material> levelsMats; 
+	List<Material> levelsMats; 
 
 
 	GameObject ScoreText;
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 	float oldDelay;
 
 	public int highScore;
+	public int numPolysDestroyed = 0;
 
 
 	float fadeSpeed = 10.0f;
@@ -126,9 +127,13 @@ public class GameManager : MonoBehaviour {
 			currentStreak = 0;
 		}
 
-		if (currentStreak == streaksNeeded) {
-			fading = true;
+//		if (currentStreak == streaksNeeded) {
+//			fading = true;
+//
+//		}
 
+		if (numPolysDestroyed >= 10) {
+			fading = true;
 		}
 
 		if (fading) {
@@ -146,6 +151,7 @@ public class GameManager : MonoBehaviour {
 			fade = 0.0f;
 			fading = false;
 			currentStreak = 0;
+			numPolysDestroyed = 0;
 		}
 
 		for(int i = 0; i< shapes.Length; i++) {
@@ -158,7 +164,8 @@ public class GameManager : MonoBehaviour {
 		
 		
 		
-		scoreTextMesh.text = "Score: " + score * 3000 + "\nStreak: " + currentStreak; 
+		//scoreTextMesh.text = "Score: " + score * 3000 + "\nStreak: " + currentStreak; 
+		scoreTextMesh.text = "Score: " + score * 3000 + "\nPoly: " + numPolysDestroyed; 
 
 		shapes = GameObject.FindObjectsOfType<Shape> ();
 
@@ -251,6 +258,7 @@ public class GameManager : MonoBehaviour {
 
 
 				score += polys[0].sides;
+				numPolysDestroyed += polys.Count - 1;
 				
 				for (int i = 0; i < polys.Count; i++) {
 
@@ -259,6 +267,7 @@ public class GameManager : MonoBehaviour {
 				
 
 					Destroy (polys [i].gameObject);
+
 		
 
 
