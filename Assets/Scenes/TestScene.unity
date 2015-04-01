@@ -558,6 +558,12 @@ MonoBehaviour:
   level23: {fileID: 2100000, guid: 5fb67e9b9dbd445cb9c763de31096a02, type: 2}
   level34: {fileID: 2100000, guid: 217ec717c20dc4b1c99cebbe7b9cfc4c, type: 2}
   level45: {fileID: 2100000, guid: 80e08a219c38844509ea5cfcb58b938d, type: 2}
+  levelSpeeds:
+  - -5
+  - -5
+  - -5
+  - -5
+  - -5
   levelsMats: []
   lineShader: {fileID: 10708, guid: 0000000000000000f000000000000000, type: 0}
   highScore: 0

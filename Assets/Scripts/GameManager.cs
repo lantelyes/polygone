@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
 	public Material level34;
 	public Material level45;
 
+	public List<float> levelSpeeds;
+
 	public List<Material> levelsMats; 
 
 
@@ -76,6 +78,8 @@ public class GameManager : MonoBehaviour {
 		levelsMats.Add (level34);
 		levelsMats.Add (level45);
 
+
+
 		polys = new List<Shape> ();
 
 		ScoreText = GameObject.FindGameObjectWithTag ("scoretext");
@@ -134,7 +138,7 @@ public class GameManager : MonoBehaviour {
 		
 		}
 
-		if (fade == 1.0f) {
+		if (fade == 1.0f && currentLevel != 4) {
 			currentLevel++;
 			skyRend.material = levelsMats [currentLevel-1];
 			skyRend.material.SetFloat("_Blend",0.0f);
@@ -144,9 +148,16 @@ public class GameManager : MonoBehaviour {
 			currentStreak = 0;
 		}
 
-
-
+		for(int i = 0; i< shapes.Length; i++) {
 			
+			shapes [i].Speed = levelSpeeds [currentLevel-1]; 
+			
+			
+		}
+		
+		
+		
+		
 		scoreTextMesh.text = "Score: " + score * 3000 + "\nStreak: " + currentStreak; 
 
 		shapes = GameObject.FindObjectsOfType<Shape> ();
@@ -180,6 +191,9 @@ public class GameManager : MonoBehaviour {
 
 	
 		}
+
+
+
 
 
 		if(Input.GetMouseButtonDown(0) && !isChecking) {

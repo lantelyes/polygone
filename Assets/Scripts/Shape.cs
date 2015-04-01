@@ -63,7 +63,6 @@ public class Shape : MonoBehaviour {
 	// Update is called once per frame
 	public virtual void Update () {
 
-		//Speed -= 0.0001f;
 
 
 		if (hasBeenSelected) {
