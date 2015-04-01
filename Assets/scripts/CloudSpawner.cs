@@ -9,7 +9,7 @@ public class cloudspawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		Instantiate(cloud, spawnLocation, Quaternion.identity);
+		//Instantiate(cloud, spawnLocation, Quaternion.identity);
 	}
 	
 	// Update is called once per frame
