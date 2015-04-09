@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour {
 
 	public List<float> levelSpeeds;
 
-	public List<Color> levelColors; 
+	public List<Color> levelBuildingColors; 
+	public List<Color> levelSkyColors; 
 
 	float t = 0.0f;
 	public float fadeDuration = 1.0f;
@@ -128,8 +129,17 @@ public class GameManager : MonoBehaviour {
 			if(t < 1) {
 				t += Time.deltaTime/fadeDuration;
 			}
-			Color newColor = Color.Lerp(levelColors[currentLevel],levelColors[currentLevel+1],t);
-			buildingRend.material.color =  newColor;
+			if(t >= 1) {
+				fading = false;
+				currentLevel++;
+				numPolysDestroyed = 0;
+				t = 0;
+			}
+			Color newCameraColor = Color.Lerp(levelSkyColors[currentLevel],levelSkyColors[currentLevel+1],t);
+			Color newBuildingColor = Color.Lerp(levelBuildingColors[currentLevel],levelBuildingColors[currentLevel+1],t);
+			Camera.main.backgroundColor = newCameraColor;
+			buildingRend.material.color =  newBuildingColor;
+
 		}
 	
 
