@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour {
 
 		
 
-			if (polys.Count == sidesNeeded + 1 ) {
+			if (polys.Count == sidesNeeded) { //+ 1 ) {
 
 
 				score += polys[0].sides;
