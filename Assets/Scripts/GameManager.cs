@@ -246,7 +246,7 @@ public class GameManager : MonoBehaviour {
 
 					polys[i].transform.rotation = Quaternion.identity;
 
-					Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position, polys[i].gameObject.transform.rotation);
+					Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position + new Vector3(0,0,5), polys[i].gameObject.transform.rotation);
 
 				
 

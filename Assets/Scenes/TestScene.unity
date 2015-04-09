@@ -235,6 +235,18 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: c1bb58f2222594b5a9fb459ec5862aca, type: 3}
   m_PrefabInternal: {fileID: 2074866885}
+--- !u!64 &497522476
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 497522471}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: c1bb58f2222594b5a9fb459ec5862aca, type: 3}
 --- !u!1001 &569507726
 Prefab:
   m_ObjectHideFlags: 0
@@ -1232,6 +1244,7 @@ Prefab:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400000, guid: c1bb58f2222594b5a9fb459ec5862aca, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c1bb58f2222594b5a9fb459ec5862aca, type: 3}
   m_IsPrefabParent: 0
