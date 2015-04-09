@@ -3,23 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
-	
-
-
-
-	public Material level12;
-	public Material level23;
-	public Material level34;
-	public Material level45;
 
 	public List<float> levelSpeeds;
 
-	List<Material> levelsMats; 
+	public List<Color> levelBuildingColors; 
+	public List<Color> levelSkyColors; 
 
+	float t = 0.0f;
+	public float fadeDuration = 1.0f;
 
 	GameObject ScoreText;
 	GameObject SkyObject;
 	Renderer skyRend;
+	public GameObject buildingObject;
+	Renderer buildingRend;
 	TextMesh scoreTextMesh;
 
 	public Shader lineShader;
@@ -40,7 +37,7 @@ public class GameManager : MonoBehaviour {
 	bool fading = false;
 
 	public int score;
-	public int currentLevel = 1;
+	public int currentLevel = 0;
 	public int streaksNeeded = 1;
 	public int currentStreak;
 	public int topStreak;
@@ -73,12 +70,6 @@ public class GameManager : MonoBehaviour {
 		lineRenderer.SetColors(c1, c2);
 		lineRenderer.SetWidth(0.2F, 0.2F);
 
-		levelsMats = new List<Material>();
-		levelsMats.Add (level12);
-		levelsMats.Add (level23);
-		levelsMats.Add (level34);
-		levelsMats.Add (level45);
-
 
 
 		polys = new List<Shape> ();
@@ -86,9 +77,7 @@ public class GameManager : MonoBehaviour {
 		ScoreText = GameObject.FindGameObjectWithTag ("scoretext");
 		scoreTextMesh = ScoreText.GetComponent<TextMesh> ();
 
-
-		SkyObject = GameObject.FindGameObjectWithTag ("sky");
-		skyRend = SkyObject.GetComponent<Renderer> ();
+		buildingRend = buildingObject.GetComponent<Renderer> ();
 
 
 	
@@ -137,29 +126,23 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (fading) {
-			fade = Mathf.Clamp (fade + Time.deltaTime * fadeSpeed, 0, 1);
-			skyRend.material.SetFloat("_Blend",Mathf.Lerp(0.0f,1.0f,fade));
-		
-		
-		}
+			if(t < 1) {
+				t += Time.deltaTime/fadeDuration;
+			}
+			if(t >= 1) {
+				fading = false;
+				currentLevel++;
+				numPolysDestroyed = 0;
+				t = 0;
+			}
+			Color newCameraColor = Color.Lerp(levelSkyColors[currentLevel],levelSkyColors[currentLevel+1],t);
+			Color newBuildingColor = Color.Lerp(levelBuildingColors[currentLevel],levelBuildingColors[currentLevel+1],t);
+			Camera.main.backgroundColor = newCameraColor;
+			buildingRend.material.color =  newBuildingColor;
 
-		if (fade == 1.0f && currentLevel != 4) {
-			currentLevel++;
-			skyRend.material = levelsMats [currentLevel-1];
-			skyRend.material.SetFloat("_Blend",0.0f);
-			fade = 0.0f;
-			fading = false;
-			currentStreak = 0;
-			numPolysDestroyed = 0;
 		}
+	
 
-		for(int i = 0; i< shapes.Length; i++) {
-			
-			shapes [i].Speed = levelSpeeds [currentLevel-1]; 
-			
-			
-		}
-		
 		
 		
 		

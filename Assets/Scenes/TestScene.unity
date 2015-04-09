@@ -231,6 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5f6dc543a88491ea0126b108c79ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &497522471
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: c1bb58f2222594b5a9fb459ec5862aca, type: 3}
+  m_PrefabInternal: {fileID: 2074866885}
 --- !u!1001 &569507726
 Prefab:
   m_ObjectHideFlags: 0
@@ -964,16 +968,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5886d816f5a47348092a4d04898e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level12: {fileID: 2100000, guid: 5960ce17c1a9946e28fbb31c0ba13343, type: 2}
-  level23: {fileID: 2100000, guid: 5fb67e9b9dbd445cb9c763de31096a02, type: 2}
-  level34: {fileID: 2100000, guid: 217ec717c20dc4b1c99cebbe7b9cfc4c, type: 2}
-  level45: {fileID: 2100000, guid: 80e08a219c38844509ea5cfcb58b938d, type: 2}
   levelSpeeds:
   - -5
   - -5
   - -5
   - -5
   - -5
+  levelBuildingColors:
+  - {r: .266666681, g: .533333361, b: .800000072, a: 0}
+  - {r: .266666681, g: .466666698, b: .600000024, a: 0}
+  - {r: .466666698, g: .800000072, b: .800000072, a: 0}
+  - {r: 1, g: .466666698, b: .333333343, a: 0}
+  - {r: .800000072, g: .266666681, b: .266666681, a: 0}
+  levelSkyColors:
+  - {r: .13333334, g: .333333343, b: .533333361, a: 0}
+  - {r: .533333361, g: .800000072, b: .933333397, a: 0}
+  - {r: .200000018, g: .733333349, b: .733333349, a: 0}
+  - {r: .466666698, g: .333333343, b: .333333343, a: 0}
+  - {r: .533333361, g: .333333343, b: .333333343, a: 0}
+  fadeDuration: 1
+  buildingObject: {fileID: 497522471}
   lineShader: {fileID: 10708, guid: 0000000000000000f000000000000000, type: 0}
   highScore: 0
   numPolysDestroyed: 0
