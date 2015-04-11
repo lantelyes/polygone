@@ -999,6 +999,7 @@ MonoBehaviour:
   - {r: .466666698, g: .333333343, b: .333333343, a: 0}
   - {r: .533333361, g: .333333343, b: .333333343, a: 0}
   fadeDuration: 1
+  streakTiers: 050000000a0000000f000000
   buildingObject: {fileID: 497522471}
   lineShader: {fileID: 10708, guid: 0000000000000000f000000000000000, type: 0}
   highScore: 0

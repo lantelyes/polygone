@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour {
 	float t = 0.0f;
 	public float fadeDuration = 1.0f;
 
+	public List<int> streakTiers; 
+	int currentTier = 0;
+
+	float scoreMultiplier = 1.0f; 
+
 	GameObject ScoreText;
 	GameObject SkyObject;
 	Renderer skyRend;
@@ -38,7 +43,7 @@ public class GameManager : MonoBehaviour {
 
 	public int score;
 	public int currentLevel = 0;
-	public int streaksNeeded = 1;
+	public int streaksNeeded = 5;
 	public int currentStreak;
 	public int topStreak;
 	public float streakExpireTime = 3.0f;
@@ -116,10 +121,22 @@ public class GameManager : MonoBehaviour {
 			currentStreak = 0;
 		}
 
-//		if (currentStreak == streaksNeeded) {
-//			fading = true;
-//
-//		}
+		//print (streakTiers[currentTier]);
+
+		if (currentStreak == streakTiers [currentTier]) {
+			print ("Streak");
+		
+			scoreMultiplier += 1.0f;
+
+			currentTier++;
+		
+
+
+		}
+
+		if (currentStreak == 0) {
+			scoreMultiplier = 1.0f;
+		}
 
 		if (numPolysDestroyed >= 10) {
 			fading = true;
@@ -147,7 +164,8 @@ public class GameManager : MonoBehaviour {
 		
 		
 		//scoreTextMesh.text = "Score: " + score * 3000 + "\nStreak: " + currentStreak; 
-		scoreTextMesh.text = "Score: " + score * 3000 + "\nPolys: " + numPolysDestroyed; 
+		scoreTextMesh.text = "Score: " + (score * 3000 * scoreMultiplier)+ "\nPolys: " + numPolysDestroyed + "\nStreak: " + currentStreak + "\nMultiplier: " + scoreMultiplier + "x";
+			
 
 		shapes = GameObject.FindObjectsOfType<Shape> ();
 
@@ -236,18 +254,25 @@ public class GameManager : MonoBehaviour {
 
 		
 
-			if (polys.Count == sidesNeeded) { //+ 1 ) {
+			if (polys.Count == sidesNeeded) {
 
+				List<Vector3> oldPositions = new List<Vector3>();
+				List<GameObject> destroyEffects = new List<GameObject>();
 
 				score += polys[0].sides;
 				numPolysDestroyed += polys.Count - 1;
+
+	
 				
 				for (int i = 0; i < polys.Count; i++) {
 
 					polys[i].transform.rotation = Quaternion.identity;
 
-					Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position + new Vector3(0,0,5), polys[i].gameObject.transform.rotation);
+					oldPositions.Add(polys[i].transform.position);
+					destroyEffects.Add(polys[i].DestroyEffect);
 
+
+					Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position + new Vector3(0,0,5), polys[i].gameObject.transform.rotation);
 				
 
 					Destroy (polys [i].gameObject);
@@ -257,6 +282,7 @@ public class GameManager : MonoBehaviour {
 
 				}
 
+		
 			
 				currentStreak +=1;
 				streakExpireTime = 3.0f;
@@ -266,6 +292,16 @@ public class GameManager : MonoBehaviour {
 
 				polys.Clear ();
 				isChecking = false;
+
+				if(currentStreak == streakTiers[0]){
+					for(int k = 0; k < oldPositions.Count; k++) {
+							Collider[] toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
+							for(int i =0 ; i < toExplode.Length; i++) {
+								Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
+								Destroy (toExplode[i].gameObject);
+							}
+					}
+				}
 			
 			}
 		}
