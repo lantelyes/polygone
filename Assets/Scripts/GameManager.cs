@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
+	public Rigidbody projectile;
+
 	public List<float> levelSpeeds;
 
 	public List<Color> levelBuildingColors; 
@@ -23,8 +25,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject buildingObject;
 	Renderer buildingRend;
 	TextMesh scoreTextMesh;
+	bool gameOver = false;
 
 	public Shader lineShader;
+	int polyGones = 0;
 
 	float levelSpeed;
 
@@ -47,6 +51,7 @@ public class GameManager : MonoBehaviour {
 	public int currentStreak;
 	public int topStreak;
 	public float streakExpireTime = 3.0f;
+	public List<int> polyGonesNeeded;
 
 	List<Shape> polys;
 	int sidesNeeded;
@@ -112,6 +117,17 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 
 
+		if (Input.GetButtonDown ("Fire1")) {
+			//Rigidbody clone;
+			//clone = Instantiate (projectile, Camera.main.transform.position + new Vector3(0.0f,0.0f,50.0f), Quaternion.Euler(90.0f,180.0f,0.0f)) as Rigidbody;
+			//clone.velocity = transform.TransformDirection (Vector3.forward * -30);
+		}
+
+		if (currentLevel == 4) {
+
+		}
+
+
 
 
 		streakExpireTime -= Time.deltaTime;
@@ -121,7 +137,6 @@ public class GameManager : MonoBehaviour {
 			currentStreak = 0;
 		}
 
-		//print (streakTiers[currentTier]);
 
 		if (currentStreak == streakTiers [currentTier]) {
 			print ("Streak");
@@ -138,8 +153,9 @@ public class GameManager : MonoBehaviour {
 			scoreMultiplier = 1.0f;
 		}
 
-		if (numPolysDestroyed >= 10) {
+		if (polyGones >= polyGonesNeeded[currentLevel]) {
 			fading = true;
+			polyGones=0;
 		}
 
 		if (fading) {
@@ -277,10 +293,9 @@ public class GameManager : MonoBehaviour {
 
 					Destroy (polys [i].gameObject);
 
-		
-
-
 				}
+
+				polyGones++;
 
 		
 			

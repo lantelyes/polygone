@@ -88,6 +88,79 @@ NavMeshSettings:
     cellSize: .166666657
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &160669226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 160669229}
+  - 33: {fileID: 160669228}
+  - 23: {fileID: 160669227}
+  - 64: {fileID: 160669230}
+  m_Layer: 2
+  m_Name: pCube2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &160669227
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160669226}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 667da7a05417a4785bc047f43c974f70, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &160669228
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160669226}
+  m_Mesh: {fileID: 4300000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
+--- !u!4 &160669229
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160669226}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
+  m_LocalPosition: {x: 0, y: 0, z: 25.4099998}
+  m_LocalScale: {x: 55.6795654, y: 55.6795158, z: 55.6795158}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+--- !u!64 &160669230
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160669226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
 --- !u!1 &202486655
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,64 +369,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd54b11fa38b648b4a0e17eb4785f79d, type: 3}
-  m_IsPrefabParent: 0
---- !u!1001 &578710129
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.73000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 19.6800003
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -1.62920685e-07
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 40.5178261
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 40.5177879
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 40.5177879
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 667da7a05417a4785bc047f43c974f70, type: 2}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 000cf42b6512944b981e36c61c1df9e9, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &620860758
 GameObject:
@@ -1022,6 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5886d816f5a47348092a4d04898e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 5475772, guid: 4032a5a5f5fb340faaac012bbe9ca1ff, type: 2}
   levelSpeeds:
   - -5
   - -5
@@ -1030,29 +1046,30 @@ MonoBehaviour:
   - -5
   levelBuildingColors:
   - {r: .266666681, g: .533333361, b: .800000072, a: 0}
-  - {r: .266666681, g: .466666698, b: .600000024, a: 0}
   - {r: .466666698, g: .800000072, b: .800000072, a: 0}
+  - {r: .266666681, g: .466666698, b: .600000024, a: 0}
   - {r: 1, g: .466666698, b: .333333343, a: 0}
   - {r: .800000072, g: .266666681, b: .266666681, a: 0}
   levelSkyColors:
   - {r: .13333334, g: .333333343, b: .533333361, a: 0}
-  - {r: .533333361, g: .800000072, b: .933333397, a: 0}
   - {r: .200000018, g: .733333349, b: .733333349, a: 0}
+  - {r: .533333361, g: .800000072, b: .933333397, a: 0}
   - {r: .466666698, g: .333333343, b: .333333343, a: 0}
   - {r: .533333361, g: .333333343, b: .333333343, a: 0}
   fadeDuration: 1
   streakTiers: 050000000a0000000f000000
-  buildingObject: {fileID: 0}
+  buildingObject: {fileID: 160669226}
   lineShader: {fileID: 10708, guid: 0000000000000000f000000000000000, type: 0}
   highScore: 0
   numPolysDestroyed: 0
   fade: 0
   score: 0
-  currentLevel: 1
+  currentLevel: 0
   streaksNeeded: 1
   currentStreak: 0
   topStreak: 0
   streakExpireTime: 3
+  polyGonesNeeded: 0a0000000a0000000a0000000a0000000a000000
   c1: {r: 1, g: .921568632, b: .0156862754, a: 1}
   c2: {r: 1, g: 0, b: 0, a: 1}
   isChecking: 0
