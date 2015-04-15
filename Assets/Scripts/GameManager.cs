@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
+	public GameObject scoreManager;
 	public Rigidbody projectile;
 
 	public List<float> levelSpeeds;
@@ -85,6 +86,8 @@ public class GameManager : MonoBehaviour {
 
 		buildingRend = buildingObject.GetComponent<Renderer> ();
 
+		scoreManager = GameObject.FindGameObjectWithTag("ScoreManager");
+
 
 	
 	}
@@ -121,6 +124,8 @@ public class GameManager : MonoBehaviour {
 
 
 		if (currentLevel == 5) {
+
+			scoreManager.SendMessage("AddScore",score);
 
 			Application.LoadLevel("new_menu");
 		}

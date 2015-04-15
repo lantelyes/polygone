@@ -14,7 +14,12 @@ public class ScoreManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
+
 		GameObject textMeshObject = GameObject.FindGameObjectWithTag ("scoretext");
+		for (int i = 0; i<4; i++) {
+			textBoxes.Add(GameObject.FindGameObjectWithTag(i.ToString()).GetComponent<Text>());
+		}
 
 		Sort ();
 

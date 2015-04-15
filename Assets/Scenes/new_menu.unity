@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd9ca46257134ad28575702b53979f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScores: 640000000100000003000000881300006f000000
+  highScores: 0000000000000000000000000000000000000000
   textBoxes:
   - {fileID: 423913006}
   - {fileID: 250414214}
