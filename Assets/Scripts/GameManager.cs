@@ -125,7 +125,6 @@ public class GameManager : MonoBehaviour {
 
 		if (currentLevel == 5) {
 
-			scoreManager.SendMessage("AddScore",score);
 
 			Application.LoadLevel("new_menu");
 		}

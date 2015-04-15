@@ -45,6 +45,7 @@ public class ScoreManager : MonoBehaviour {
 
 
 	public void AddScore(int score) {
+		print (score);
 		highScores.Add (score);
 		Sort ();
 
