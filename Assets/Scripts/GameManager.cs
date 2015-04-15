@@ -37,11 +37,7 @@ public class GameManager : MonoBehaviour {
 
 	public int highScore;
 	public int numPolysDestroyed = 0;
-
-
-	float fadeSpeed = 1.0f;
-	float start = 0.0f;
-	float end = 1.0f;
+	
 	public float fade = 0.0f;
 	bool fading = false;
 
@@ -122,6 +118,12 @@ public class GameManager : MonoBehaviour {
 
 	
 	void Update () {
+
+
+		if (currentLevel == 5) {
+
+			Application.LoadLevel("new_menu");
+		}
 
 
 
@@ -308,8 +310,10 @@ public class GameManager : MonoBehaviour {
 					for(int k = 0; k < oldPositions.Count; k++) {
 							Collider[] toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
 							for(int i =0 ; i < toExplode.Length; i++) {
-								Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
-								Destroy (toExplode[i].gameObject);
+								if(toExplode[i].gameObject.tag == "shape") {
+									Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
+									Destroy (toExplode[i].gameObject);
+								}
 							}
 					}
 				}

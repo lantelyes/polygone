@@ -30,7 +30,7 @@ GameObject:
   - 65: {fileID: 6521096}
   m_Layer: 8
   m_Name: hexagon
-  m_TagString: Untagged
+  m_TagString: shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
