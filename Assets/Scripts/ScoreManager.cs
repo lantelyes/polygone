@@ -16,7 +16,8 @@ public class ScoreManager : MonoBehaviour {
 
 		GameObject textMeshObject = GameObject.FindGameObjectWithTag ("scoretext");
 
-		highScores.Sort ();
+		Sort ();
+
 		DontDestroyOnLoad (gameObject);
 	
 	}
@@ -32,10 +33,15 @@ public class ScoreManager : MonoBehaviour {
 	
 	}
 
+	public void Sort() {
+		highScores.Sort ();
+		highScores.Reverse ();
+	}
+
 
 	public void AddScore(int score) {
 		highScores.Add (score);
-		highScores.Sort ();
+		Sort ();
 
 	}
 }
