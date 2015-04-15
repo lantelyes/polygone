@@ -112,21 +112,16 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	void Popup() {
+		Rigidbody clone;
+		clone = Instantiate (projectile, Camera.main.transform.position + new Vector3(Random.Range(-5,5),Random.Range(-5,5),10.0f), Quaternion.Euler(90.0f,180.0f,0.0f)) as Rigidbody;
+		clone.AddTorque (new Vector3 (0.0f, 0.0f, 50.0f * Random.Range (-1, 1)));
+	}
+
+
 
 	
 	void Update () {
-
-
-		if (Input.GetButtonDown ("Fire1")) {
-			//Rigidbody clone;
-			//clone = Instantiate (projectile, Camera.main.transform.position + new Vector3(0.0f,0.0f,50.0f), Quaternion.Euler(90.0f,180.0f,0.0f)) as Rigidbody;
-			//clone.velocity = transform.TransformDirection (Vector3.forward * -30);
-		}
-
-		if (currentLevel == 4) {
-
-		}
-
 
 
 
@@ -139,10 +134,10 @@ public class GameManager : MonoBehaviour {
 
 
 		if (currentStreak == streakTiers [currentTier]) {
-			print ("Streak");
+	
 		
 			scoreMultiplier += 1.0f;
-
+		
 			currentTier++;
 		
 
@@ -294,7 +289,8 @@ public class GameManager : MonoBehaviour {
 					Destroy (polys [i].gameObject);
 
 				}
-
+				Popup();
+				
 				polyGones++;
 
 		
