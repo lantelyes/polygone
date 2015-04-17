@@ -14,7 +14,7 @@ GameObject:
   - 65: {fileID: 6581474}
   - 114: {fileID: 11468892}
   m_Layer: 2
-  m_Name: wowers
+  m_Name: Level2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7628ee8caf8d84e6abd195c6e2dc5708, type: 2}
+  - {fileID: 2100000, guid: ef4470040300347d8b44a212fbbe60c0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

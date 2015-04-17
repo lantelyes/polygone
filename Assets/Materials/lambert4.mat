@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: lambert1
+  m_Name: lambert4
   m_Shader: {fileID: 4800000, guid: e1f50dc041f1545edbb228f8daea22a1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -18,7 +18,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 9892a5220b7384dab8a7033c9d744b9c, type: 3}
+          m_Texture: {fileID: 2800000, guid: c764595c0c3754b2bbe0a98971fe1fce, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:

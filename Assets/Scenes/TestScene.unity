@@ -1043,6 +1043,17 @@ MonoBehaviour:
   - {r: .533333361, g: .333333343, b: .333333343, a: 0}
   fadeDuration: 1
   streakTiers: 050000000a0000000f0000001400000023000000320000004b00000064000000
+  levelPopups:
+  - {fileID: 5475772, guid: 5bc3cf059674942e39d97cfcc54dfd06, type: 2}
+  - {fileID: 5475772, guid: f0aa138bced3b40498f83aa395716505, type: 2}
+  - {fileID: 5475772, guid: af8a59a144954462798ace92b0a62356, type: 2}
+  - {fileID: 5475772, guid: ab8899d8cfb8344298cd00e5455ad8ad, type: 2}
+  - {fileID: 5475772, guid: 33d5ef0b3387b4d14af70d450d665814, type: 2}
+  popups:
+  - {fileID: 5475772, guid: 6760000b171f84497a9278616fea8b46, type: 2}
+  - {fileID: 5475772, guid: 4032a5a5f5fb340faaac012bbe9ca1ff, type: 2}
+  - {fileID: 5475772, guid: 0a439c5e69dd84cfcb5a933b80763bfe, type: 2}
+  - {fileID: 5475772, guid: 954ce4516631e4a51948493ba97495e0, type: 2}
   buildingObject: {fileID: 160669226}
   lineShader: {fileID: 10708, guid: 0000000000000000f000000000000000, type: 0}
   highScore: 0

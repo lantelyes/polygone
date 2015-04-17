@@ -14,7 +14,7 @@ GameObject:
   - 65: {fileID: 6581474}
   - 114: {fileID: 11468892}
   m_Layer: 2
-  m_Name: wowers
+  m_Name: radular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7628ee8caf8d84e6abd195c6e2dc5708, type: 2}
+  - {fileID: 2100000, guid: af295be46a7bf4808b94aaa344e1619a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

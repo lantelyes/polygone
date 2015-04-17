@@ -12,11 +12,13 @@ public class GameManager : MonoBehaviour {
 	public List<Color> levelBuildingColors; 
 	public List<Color> levelSkyColors; 
 
+	int currentTier = 0;
 	float t = 0.0f;
 	public float fadeDuration = 1.0f;
 
 	public List<int> streakTiers; 
-	int currentTier = 0;
+	public List<Rigidbody> levelPopups; 
+	public List<Rigidbody> popups;
 
 	float scoreMultiplier = 1.0f; 
 
@@ -72,6 +74,8 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		PopupLevel ();
 		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(lineShader);
 		lineRenderer.SetColors(c1, c2);
@@ -111,17 +115,27 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+
 	void Popup() {
+		int rand = Random.Range (0, 4);
 		Rigidbody clone;
-		clone = Instantiate (projectile, Camera.main.transform.position + new Vector3(Random.Range(-5,5),Random.Range(-5,5),10.0f), Quaternion.Euler(90.0f,180.0f,0.0f)) as Rigidbody;
+		clone = Instantiate (popups[rand], Camera.main.transform.position + new Vector3(Random.Range(-5,5),Random.Range(-5,5),10.0f), Quaternion.Euler(90.0f,180.0f,0.0f)) as Rigidbody;
 		clone.AddTorque (new Vector3 (0.0f, 0.0f, 50.0f * Random.Range (-1, 1)));
 	}
+	void PopupLevel() {
+
+
+
+		Rigidbody clone;
+		clone = Instantiate (levelPopups[currentLevel], Camera.main.transform.position + new Vector3(0,3.0f,7.0f), Quaternion.Euler(90.0f,180.0f,0.0f)) as Rigidbody;
+	
+	} 
 
 
 
 	
 	void Update () {
-
+		shapes = GameObject.FindObjectsOfType<Shape> ();
 
 		if (currentLevel == 5) {
 
@@ -157,9 +171,15 @@ public class GameManager : MonoBehaviour {
 		if (polyGones >= polyGonesNeeded[currentLevel]) {
 			fading = true;
 			polyGones=0;
+
+			for (int i = 0; i < shapes.Length; i++) {
+				Destroy (shapes [i].gameObject);
+			}
+
 		}
 
 		if (fading) {
+
 			if(t < 1) {
 				t += Time.deltaTime/fadeDuration;
 			}
@@ -168,6 +188,7 @@ public class GameManager : MonoBehaviour {
 				currentLevel++;
 				numPolysDestroyed = 0;
 				t = 0;
+				PopupLevel();
 			}
 			Color newCameraColor = Color.Lerp(levelSkyColors[currentLevel],levelSkyColors[currentLevel+1],t);
 			Color newBuildingColor = Color.Lerp(levelBuildingColors[currentLevel],levelBuildingColors[currentLevel+1],t);
@@ -184,7 +205,7 @@ public class GameManager : MonoBehaviour {
 		scoreTextMesh.text = "Score: " + (score * 3000 * scoreMultiplier)+ "\nPolys: " + numPolysDestroyed + "\nStreak: " + currentStreak + "\nMultiplier: " + scoreMultiplier + "x";
 			
 
-		shapes = GameObject.FindObjectsOfType<Shape> ();
+;
 
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 
