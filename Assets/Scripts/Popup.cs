@@ -6,6 +6,7 @@ public class Popup : MonoBehaviour {
 	Transform tr;
 	Renderer rend;
 	float fade = 0.0f;
+	public float fadeSpeed = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,7 @@ public class Popup : MonoBehaviour {
 
 		tr.localScale += (new Vector3 (5.0f, 5.0f, 5.0f) * Time.deltaTime);
 
-		fade += Time.deltaTime * 1.0f;
+		fade += Time.deltaTime * fadeSpeed;
 
 		rend.material.color = (Color.Lerp(Color.grey,Color.clear,fade));
 

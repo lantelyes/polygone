@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 	public Rigidbody projectile;
 
 	public List<float> levelSpeeds;
+	public List<AudioSource> connectSounds;
+
 
 	public List<Color> levelBuildingColors; 
 	public List<Color> levelSkyColors; 
@@ -124,11 +126,9 @@ public class GameManager : MonoBehaviour {
 	}
 	void PopupLevel() {
 
-
-
 		Rigidbody clone;
 		clone = Instantiate (levelPopups[currentLevel], Camera.main.transform.position + new Vector3(0,3.0f,7.0f), Quaternion.Euler(90.0f,180.0f,0.0f)) as Rigidbody;
-	
+		
 	} 
 
 
@@ -254,7 +254,10 @@ public class GameManager : MonoBehaviour {
 				poly.isFirst = true;
 
 				polys.Add(poly);
+
 				isChecking = true;
+
+				connectSounds[0].Play();
 				
 			}
 		
@@ -280,6 +283,8 @@ public class GameManager : MonoBehaviour {
 
 						poly.hasBeenSelected = true;
 						polys.Add (poly);
+						connectSounds[polys.Count].Play();
+
 
 					}
 				}
