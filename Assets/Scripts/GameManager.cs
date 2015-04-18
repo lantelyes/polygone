@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour {
 	public int topStreak;
 	public float streakExpireTime = 3.0f;
 	public List<int> polyGonesNeeded;
+	int numLevels = 4;
 
 	List<Shape> polys;
 	int sidesNeeded;
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour {
 
 	Ray pickRay;
 	RaycastHit hit;
+
 
 	public Color c1 = Color.yellow;
 	public Color c2 = Color.red;
@@ -77,7 +79,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		PopupLevel ();
+		PopupLevel (0);
 		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(lineShader);
 		lineRenderer.SetColors(c1, c2);
@@ -124,11 +126,12 @@ public class GameManager : MonoBehaviour {
 		clone = Instantiate (popups[rand], Camera.main.transform.position + new Vector3(Random.Range(-5,5),Random.Range(-5,5),10.0f), Quaternion.Euler(90.0f,180.0f,0.0f)) as Rigidbody;
 		clone.AddTorque (new Vector3 (0.0f, 0.0f, 50.0f * Random.Range (-1, 1)));
 	}
-	void PopupLevel() {
+	void PopupLevel(int levelNum) {
 
 		Rigidbody clone;
-		clone = Instantiate (levelPopups[currentLevel], Camera.main.transform.position + new Vector3(0,3.0f,7.0f), Quaternion.Euler(90.0f,180.0f,0.0f)) as Rigidbody;
-		
+		if (currentLevel != numLevels) {
+			clone = Instantiate (levelPopups [levelNum], Camera.main.transform.position + new Vector3 (0, 3.0f, 7.0f), Quaternion.Euler (90.0f, 180.0f, 0.0f)) as Rigidbody;
+		}
 	} 
 
 
@@ -137,7 +140,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		shapes = GameObject.FindObjectsOfType<Shape> ();
 
-		if (currentLevel == 5) {
+		if (gameOver) {
 
 
 			Application.LoadLevel("new_menu");
@@ -169,7 +172,15 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (polyGones >= polyGonesNeeded[currentLevel]) {
-			fading = true;
+
+			if(currentLevel == 4) {
+				gameOver = true;
+			}
+			if (currentLevel != levelPopups.Count) {
+				fading = true;
+				PopupLevel(currentLevel+1);
+			}
+		
 			polyGones=0;
 
 			for (int i = 0; i < shapes.Length; i++) {
@@ -188,15 +199,18 @@ public class GameManager : MonoBehaviour {
 				currentLevel++;
 				numPolysDestroyed = 0;
 				t = 0;
-				PopupLevel();
+
+			
 			}
-			Color newCameraColor = Color.Lerp(levelSkyColors[currentLevel],levelSkyColors[currentLevel+1],t);
-			Color newBuildingColor = Color.Lerp(levelBuildingColors[currentLevel],levelBuildingColors[currentLevel+1],t);
-			Camera.main.backgroundColor = newCameraColor;
-			buildingRend.material.color =  newBuildingColor;
+			if (currentLevel != numLevels) {
+				Color newCameraColor = Color.Lerp(levelSkyColors[currentLevel],levelSkyColors[currentLevel+1],t);
+				Color newBuildingColor = Color.Lerp(levelBuildingColors[currentLevel],levelBuildingColors[currentLevel+1],t);
+				Camera.main.backgroundColor = newCameraColor;
+				buildingRend.material.color =  newBuildingColor;
+			}
 
 		}
-	
+
 
 		
 		
@@ -305,7 +319,9 @@ public class GameManager : MonoBehaviour {
 				score += polys[0].sides;
 				numPolysDestroyed += polys.Count - 1;
 
-	
+			
+
+
 				
 				for (int i = 0; i < polys.Count; i++) {
 
@@ -321,8 +337,6 @@ public class GameManager : MonoBehaviour {
 					Destroy (polys [i].gameObject);
 
 				}
-				Popup();
-				
 				polyGones++;
 
 		
@@ -337,6 +351,7 @@ public class GameManager : MonoBehaviour {
 				isChecking = false;
 
 				if(currentStreak == streakTiers[0]){
+					Popup();
 					for(int k = 0; k < oldPositions.Count; k++) {
 							Collider[] toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
 							for(int i =0 ; i < toExplode.Length; i++) {
