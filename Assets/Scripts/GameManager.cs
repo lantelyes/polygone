@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour {
 		if (gameOver) {
 
 
-			Application.LoadLevel("new_menu");
+			Application.LoadLevel("gameover");
 		}
 
 
