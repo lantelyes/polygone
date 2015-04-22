@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
 	public List<Color> levelBuildingColors; 
 	public List<Color> levelSkyColors; 
 
+
+	bool isNinja = false;
 	int currentTier = 0;
 	float t = 0.0f;
 	public float fadeDuration = 1.0f;
@@ -229,8 +231,10 @@ public class GameManager : MonoBehaviour {
 		
 		lineRenderer.SetVertexCount (polys.Count);
 		while(r < polys.Count) {
-			lineRenderer.SetPosition(r,polys[r].gameObject.transform.position);
-			r++;
+			if(!isNinja) {
+				lineRenderer.SetPosition(r,polys[r].gameObject.transform.position);
+				r++;
+			}
 		}
 		r = 0;
 		
@@ -280,8 +284,28 @@ public class GameManager : MonoBehaviour {
 
 		}
 
+		if(isNinja){
+	
+			t += Time.deltaTime/3.0f;
+	
+			hit = new RaycastHit ();
+			if (Physics.Raycast (pickRay, out hit, 10000.0f)) {
+				Shape poly = (Shape)hit.collider.gameObject.GetComponent<Shape> ();
+				
+				Instantiate(poly.DestroyEffect, poly.gameObject.transform.position + new Vector3(0,0,5), poly.gameObject.transform.rotation);
+				
+				Destroy (poly.gameObject);
+				
+			}
+			if(t>=1) {
+				isNinja = false;
+			}
+		}
 
-		if (isChecking) {
+
+		if (isChecking && !isNinja) {
+
+
 
 			for(int i = 0; i< shapes.Length; i++) {
 				shapes[i].SendMessage("SlowDown",true);
@@ -351,6 +375,11 @@ public class GameManager : MonoBehaviour {
 				isChecking = false;
 
 				if(currentStreak == streakTiers[0]){
+					isNinja = true;
+
+				}
+
+				if(currentStreak == streakTiers[2]){
 					Popup();
 					for(int k = 0; k < oldPositions.Count; k++) {
 							Collider[] toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
