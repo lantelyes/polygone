@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour {
 
 	public List<float> levelSpeeds;
 	public List<AudioSource> connectSounds;
+	public AudioSource music;
 
 
 	public List<Color> levelBuildingColors; 
@@ -26,12 +28,14 @@ public class GameManager : MonoBehaviour {
 
 	float scoreMultiplier = 1.0f; 
 
-	GameObject ScoreText;
+	public GameObject ScoreText;
+	public GameObject MultiText;
 	GameObject SkyObject;
 	Renderer skyRend;
 	public GameObject buildingObject;
 	Renderer buildingRend;
 	TextMesh scoreTextMesh;
+	TextMesh multiTextMesh;
 	bool gameOver = false;
 
 	public Shader lineShader;
@@ -78,6 +82,13 @@ public class GameManager : MonoBehaviour {
 
 	int r = 0;
 
+	void StoreHighscore(int newHighscore)
+	{
+		int oldHighscore = PlayerPrefs.GetInt("highscore", 0);    
+		if(newHighscore > oldHighscore)
+			PlayerPrefs.SetInt("highscore", newHighscore);
+	}
+
 	// Use this for initialization
 	void Start () {
 
@@ -91,8 +102,10 @@ public class GameManager : MonoBehaviour {
 
 		polys = new List<Shape> ();
 
-		ScoreText = GameObject.FindGameObjectWithTag ("scoretext");
+	
 		scoreTextMesh = ScoreText.GetComponent<TextMesh> ();
+
+		multiTextMesh = MultiText.GetComponent<TextMesh> ();
 
 		buildingRend = buildingObject.GetComponent<Renderer> ();
 
@@ -142,15 +155,22 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		shapes = GameObject.FindObjectsOfType<Shape> ();
 
+		music.pitch = 1 + currentStreak/5.0f;
+
+	
+
 		if (gameOver) {
+
+			StoreHighscore(score);
 
 
 			Application.LoadLevel("gameover");
 		}
 
 
-
-		streakExpireTime -= Time.deltaTime;
+		if (isNinja) {
+			streakExpireTime -= Time.deltaTime;
+		}
 
 		if (streakExpireTime < 0) {
 			streakExpireTime = 3.0f;
@@ -218,10 +238,10 @@ public class GameManager : MonoBehaviour {
 		
 		
 		//scoreTextMesh.text = "Score: " + score * 3000 + "\nStreak: " + currentStreak; 
-		scoreTextMesh.text = "Score: " + (score * 3000 * scoreMultiplier)+ "\nPolys: " + numPolysDestroyed + "\nStreak: " + currentStreak + "\nMultiplier: " + scoreMultiplier + "x";
+		scoreTextMesh.text = (score * 1000.0f * scoreMultiplier).ToString();
+		multiTextMesh.text = (scoreMultiplier) + "x";
 			
 
-;
 
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
 
@@ -340,11 +360,13 @@ public class GameManager : MonoBehaviour {
 				List<Vector3> oldPositions = new List<Vector3>();
 				List<GameObject> destroyEffects = new List<GameObject>();
 
-				score += polys[0].sides;
+			
 				numPolysDestroyed += polys.Count - 1;
 
 			
 
+				score += polys[0].sides;
+				print (polys[0].sides);
 
 				
 				for (int i = 0; i < polys.Count; i++) {
@@ -362,6 +384,7 @@ public class GameManager : MonoBehaviour {
 
 				}
 				polyGones++;
+
 
 		
 			
