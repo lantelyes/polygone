@@ -3,9 +3,13 @@ using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameManager: MonoBehaviour {
+public class GameManager2 : MonoBehaviour {
 
 	public GameObject scoreManager;
+	List<Vector3> oldPositions;
+	List<GameObject> destroyEffects;
+
+	Collider[] toExplode;
 
 	public List<float> levelSpeeds;
 	public List<AudioSource> connectSounds;
@@ -81,9 +85,20 @@ public class GameManager: MonoBehaviour {
 
 	public Renderer rend;
 
-	public Shape[] shapes;
+//	public Shape[] shapes;
+
+	public List<Shape> shapes;
 
 	int r = 0;
+
+	void CleanUp() {
+		for (int i = 0; i< shapes.Count; i++) {
+			if(shapes[i] == null) {
+				shapes.RemoveAt(i);
+			}
+		}
+
+	}
 
 	void StoreHighscore(int newHighscore)
 	{
@@ -94,6 +109,12 @@ public class GameManager: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		shapes = new List<Shape> ();
+
+		oldPositions = new List<Vector3>();
+	 	destroyEffects = new List<GameObject>();
+
 
 		PopupLevel (0);
 		LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -162,7 +183,8 @@ public class GameManager: MonoBehaviour {
 
 	
 	void Update () {
-		shapes = GameObject.FindObjectsOfType<Shape> ();
+		CleanUp ();
+
 
 		music.pitch = 1 + audioOffset;
 
@@ -171,7 +193,6 @@ public class GameManager: MonoBehaviour {
 		if (gameOver) {
 
 			StoreHighscore(score);
-
 
 			Application.LoadLevel("gameover");
 		}
@@ -214,8 +235,10 @@ public class GameManager: MonoBehaviour {
 		
 			polyGones=0;
 
-			for (int i = 0; i < shapes.Length; i++) {
-				Destroy (shapes [i].gameObject);
+			for (int i = 0; i < shapes.Count; i++) {
+				if(shapes[i] != null) {
+					Destroy (shapes [i].gameObject);
+				}
 			}
 
 		}
@@ -336,8 +359,10 @@ public class GameManager: MonoBehaviour {
 
 
 
-			for(int i = 0; i< shapes.Length; i++) {
-				shapes[i].SendMessage("SlowDown",true);
+			for(int i = 0; i< shapes.Count; i++) {
+				if(shapes[i] != null) {
+					shapes[i].SendMessage("SlowDown",true);
+				}
 			}
 	
 
@@ -366,8 +391,8 @@ public class GameManager: MonoBehaviour {
 
 			if (polys.Count == sidesNeeded) {
 
-				List<Vector3> oldPositions = new List<Vector3>();
-				List<GameObject> destroyEffects = new List<GameObject>();
+				oldPositions.Clear();
+				destroyEffects.Clear();
 
 			
 				numPolysDestroyed += polys.Count - 1;
@@ -415,7 +440,7 @@ public class GameManager: MonoBehaviour {
 				if(currentStreak == streakTiers[2]){
 					Popup();
 					for(int k = 0; k < oldPositions.Count; k++) {
-							Collider[] toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
+							toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
 							for(int i =0 ; i < toExplode.Length; i++) {
 								if(toExplode[i].gameObject.tag == "shape") {
 									Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
@@ -429,8 +454,10 @@ public class GameManager: MonoBehaviour {
 		}
 		else {
 
-			for(int i = 0; i< shapes.Length; i++) {
-				shapes[i].SendMessage("SlowDown",false);
+			for(int i = 0; i< shapes.Count; i++) {
+				if(shapes[i] != null) {
+					shapes[i].SendMessage("SlowDown",false);
+				}
 
 			}
 

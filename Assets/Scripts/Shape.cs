@@ -10,9 +10,11 @@ public class Shape : MonoBehaviour {
 	public Color outlineColor;
 	public float Speed = -0.1f;
 
+	GameManager2 gameManager;
 
 
-	public GameManager gameManager;
+
+
 
 
 	public float KillY;
@@ -24,8 +26,7 @@ public class Shape : MonoBehaviour {
 	bool isSloMo = false;
 
 	public GameObject DestroyEffect;
-
-	GameManager gm;
+	
 
 
 	Mesh shapeMesh;
@@ -38,8 +39,8 @@ public class Shape : MonoBehaviour {
 
 	public virtual void Start () {
 
-		gameManager = GameObject.FindGameObjectWithTag ("manager").GetComponent<GameManager>();
-
+		gameManager = GameObject.FindGameObjectWithTag ("manager").GetComponent<GameManager2>();
+		gameManager.shapes.Add (this);
 
 
 		rend = GetComponentsInChildren<MeshRenderer>()[0];
@@ -53,6 +54,10 @@ public class Shape : MonoBehaviour {
 	public virtual void OnExplode () {
 
 	
+	}
+
+	public void Awake() {
+
 	}
 
 
