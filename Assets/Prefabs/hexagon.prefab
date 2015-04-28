@@ -55,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 199150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .300000012, y: .300000012, z: .300000012}
   m_Children:
   - {fileID: 499148}
   m_Father: {fileID: 0}
@@ -131,11 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4362009a1d1a44cf59843b7aa3ad1e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sides: 0
-  color: {r: .80392158, g: .298039228, b: .282352954, a: 1}
-  outlineColor: {r: .450980395, g: .800000012, b: .811764717, a: 1}
+  sides: 6
+  color: {r: .670588255, g: .211764708, b: 1, a: 1}
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
   Speed: -5
-  gameManager: {fileID: 0}
   KillY: -10
   hasBeenSelected: 0
   isFirst: 0
