@@ -75,7 +75,6 @@ public class Shape : MonoBehaviour {
 	// Update is called once per frame
 	public virtual void Update () {
 
-		print (gameManager.currentStreak);
 
 		if (gameManager.currentStreak > 0) {
 
@@ -103,7 +102,7 @@ public class Shape : MonoBehaviour {
 
 		
 		if (isFirst && hasBeenSelected) {
-			transform.Rotate(0,5,0);
+			transform.Rotate(0,gameManager.currentStreak,0);
 		}
 		if (!hasBeenSelected && gameManager.currentStreak == 0) {
 			transform.rotation = Quaternion.identity;
