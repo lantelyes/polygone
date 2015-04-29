@@ -9,14 +9,10 @@ public class Shape : MonoBehaviour {
 	public Color color;
 	public Color outlineColor;
 	public float Speed = -0.1f;
+	public Spawner2 originSpawner;
 
 	GameManager2 gameManager;
-
-
-
-
-
-
+	
 	public float KillY;
 
 	public bool hasBeenSelected = false;
@@ -26,8 +22,6 @@ public class Shape : MonoBehaviour {
 	bool isSloMo = false;
 
 	public GameObject DestroyEffect;
-	
-
 
 	Mesh shapeMesh;
 
@@ -56,14 +50,11 @@ public class Shape : MonoBehaviour {
 	
 	}
 
-	public void Awake() {
-
+	public void Respawn() {
+		originSpawner.Spawn ();
 	}
-
-
-
-
 	
+
 	
 	// Update is called once per frame
 	public virtual void Update () {
