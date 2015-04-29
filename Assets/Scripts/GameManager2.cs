@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 public class GameManager2 : MonoBehaviour {
 
+
+	int[] highScores = new int[5]
+
 	public GameObject scoreManager;
 	List<Vector3> oldPositions;
 	List<GameObject> destroyEffects;
@@ -84,9 +87,7 @@ public class GameManager2 : MonoBehaviour {
 	public int lengthOfLineRenderer = 6;
 
 	public Renderer rend;
-
-//	public Shape[] shapes;
-
+	
 	public List<Shape> shapes;
 
 	int r = 0;
@@ -97,6 +98,25 @@ public class GameManager2 : MonoBehaviour {
 				shapes.RemoveAt(i);
 			}
 		}
+
+	}
+
+	void StoreScores(internal score) {
+
+		for (i = 0; i<highScores.Length; i++){
+			
+			//Get the highScore from 1 - 5
+			highScoreKey = "HighScore"+(i+1).ToString();
+			highScore = PlayerPrefs.GetInt(highScoreKey,0);
+
+			if(score>highScore){
+				int temp = highScore;
+				PlayerPrefs.SetInt(highScoreKey,score)
+					score = temp;
+			}
+		}
+
+
 
 	}
 
@@ -179,6 +199,23 @@ public class GameManager2 : MonoBehaviour {
 		}
 	} 
 
+
+	bool isAdjacent(Shape s1, Shape s2) {
+
+
+		if(s1.hasBeenSelected && s2.hasBeenSelected) { 
+			return false; 
+		}
+
+		float dist = Vector3.Distance (s1.transform.position, s2.transform.position);
+
+		if (dist < 3.25f) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
 
 
 	
@@ -372,10 +409,12 @@ public class GameManager2 : MonoBehaviour {
 				Shape poly = (Shape)hit.collider.gameObject.GetComponent<Shape> ();
 				if (!poly.hasBeenSelected && polys.Count != sidesNeeded) {
 					if (poly.sides == sidesNeeded) {
+						if(isAdjacent(polys[polys.Count-1],poly)){
 
-						poly.hasBeenSelected = true;
-						polys.Add (poly);
-						connectSounds[polys.Count].Play();
+							poly.hasBeenSelected = true;
+							polys.Add (poly);
+							connectSounds[polys.Count].Play();
+						}
 
 
 					}
@@ -421,7 +460,7 @@ public class GameManager2 : MonoBehaviour {
 
 
 		
-				audioOffset += 0.2f/(1+currentStreak);
+			//	audioOffset += 0.2f/(1+currentStreak);
 				currentStreak +=1 ;
 				streakExpireTime = 3.0f;
 				if(topStreak < 	currentStreak) {
