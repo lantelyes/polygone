@@ -340,7 +340,7 @@ public class GameManager2 : MonoBehaviour {
 		}
 		r = 0;
 		
-		if (Input.GetMouseButtonUp (0)) {
+		if (Input.GetMouseButtonUp (0) && !isNinja) {
 			isChecking = false;
 
 			for (int i = 0; i < polys.Count; i++) {
@@ -361,7 +361,7 @@ public class GameManager2 : MonoBehaviour {
 
 
 
-		if(Input.GetMouseButtonDown(0) && !isChecking) {
+		if(Input.GetMouseButtonDown(0) && !isChecking && !isNinja) {
 			hit = new RaycastHit ();
 			
 			if (Physics.Raycast (pickRay, out hit, 10000.0f)) {
