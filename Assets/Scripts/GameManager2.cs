@@ -13,6 +13,7 @@ public class GameManager2 : MonoBehaviour {
 	List<GameObject> destroyEffects;
 
 	Collider[] toExplode;
+	
 
 	public List<float> levelSpeeds;
 	public List<AudioSource> connectSounds;
@@ -52,6 +53,9 @@ public class GameManager2 : MonoBehaviour {
 	int polyGones = 0;
 
 	float levelSpeed;
+	public GameObject slashObject;
+
+	GameObject slash;
 
 
 	float oldDelay;
@@ -67,7 +71,7 @@ public class GameManager2 : MonoBehaviour {
 	public int streaksNeeded = 5;
 	public int currentStreak;
 	public int topStreak;
-	public float streakExpireTime = 3.0f;
+	public float streakExpireTime = 0.0f;
 	public List<int> polyGonesNeeded;
 	int numLevels = 4;
 
@@ -128,6 +132,9 @@ public class GameManager2 : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+
+		slash = (GameObject)Instantiate(slashObject,Camera.main.transform.position,Quaternion.identity);
 
 		shapes = new List<Shape> ();
 
@@ -219,6 +226,7 @@ public class GameManager2 : MonoBehaviour {
 
 	
 	void Update () {
+
 		CleanUp ();
 
 
@@ -234,12 +242,17 @@ public class GameManager2 : MonoBehaviour {
 		}
 
 
+
 		if (!isNinja) {
-			streakExpireTime -= Time.deltaTime;
+			if(currentStreak > 0) 
+			{
+				streakExpireTime += Time.deltaTime;
+			}
 		}
 
-		if (streakExpireTime < 0) {
-			streakExpireTime = 3.0f;
+		if (streakExpireTime >= 3.0f) {
+
+			streakExpireTime = 0.0f;
 			currentStreak = 0;
 			audioOffset = 0.0f;
 		}
@@ -374,17 +387,26 @@ public class GameManager2 : MonoBehaviour {
 		}
 
 		if(isNinja){
+
+
+
+			slash.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,1.0f));
 	
 			t += Time.deltaTime/3.0f;
 	
 			hit = new RaycastHit ();
 			if (Physics.Raycast (pickRay, out hit, 10000.0f)) {
+			
 				Shape poly = (Shape)hit.collider.gameObject.GetComponent<Shape> ();
-				
-				Instantiate(poly.DestroyEffect, poly.gameObject.transform.position + new Vector3(0,0,5), poly.gameObject.transform.rotation);
 
-				poly.Respawn();
-				Destroy (poly.gameObject);
+				if(!poly.justAlive) {
+					
+					Instantiate(poly.DestroyEffect, poly.gameObject.transform.position + new Vector3(0,0,5), poly.gameObject.transform.rotation);
+
+					poly.Respawn();
+					Destroy (poly.gameObject);
+
+				}
 				
 			}
 			if(t>=1) {
@@ -461,9 +483,9 @@ public class GameManager2 : MonoBehaviour {
 
 
 		
-			//	audioOffset += 0.2f/(1+currentStreak);
+				audioOffset += 0.04f/(1+currentStreak);
 				currentStreak +=1 ;
-				streakExpireTime = 3.0f;
+				streakExpireTime = 0.0f;
 				if(topStreak < 	currentStreak) {
 					topStreak = currentStreak;
 				}
@@ -477,13 +499,15 @@ public class GameManager2 : MonoBehaviour {
 
 				}
 
-				if(currentStreak == streakTiers[2]){
+				if(currentStreak == streakTiers[4]){
 					Popup();
 					for(int k = 0; k < oldPositions.Count; k++) {
 							toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
 							for(int i =0 ; i < toExplode.Length; i++) {
 								if(toExplode[i].gameObject.tag == "shape") {
 									Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
+									Shape temp = (Shape)toExplode[i].gameObject.GetComponent<Shape>();
+									temp.Respawn();
 									Destroy (toExplode[i].gameObject);
 								}
 							}
