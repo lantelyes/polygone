@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class GameManager2 : MonoBehaviour {
 
 
-	int[] highScores = new int[5]
+	int[] highScores = new int[5];
 
 	public GameObject scoreManager;
 	List<Vector3> oldPositions;
@@ -101,17 +101,16 @@ public class GameManager2 : MonoBehaviour {
 
 	}
 
-	void StoreScores(internal score) {
+	void StoreScores(int score) {
 
-		for (i = 0; i<highScores.Length; i++){
-			
-			//Get the highScore from 1 - 5
-			highScoreKey = "HighScore"+(i+1).ToString();
+		for (int i = 0; i<highScores.Length; i++){
+
+			string highScoreKey = "HighScore"+(i+1).ToString();
 			highScore = PlayerPrefs.GetInt(highScoreKey,0);
 
 			if(score>highScore){
 				int temp = highScore;
-				PlayerPrefs.SetInt(highScoreKey,score)
+				PlayerPrefs.SetInt(highScoreKey,score);
 					score = temp;
 			}
 		}
