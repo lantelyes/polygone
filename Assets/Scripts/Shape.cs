@@ -78,7 +78,7 @@ public class Shape : MonoBehaviour {
 
 		if (gameManager.currentStreak > 0) {
 
-			tr.Rotate(0,gameManager.currentStreak * 1.0f,0);
+			tr.Rotate(0,Mathf.Clamp(gameManager.currentStreak,0,3),0);
 		}
 
 
