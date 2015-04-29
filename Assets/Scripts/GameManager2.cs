@@ -273,6 +273,7 @@ public class GameManager2 : MonoBehaviour {
 
 			for (int i = 0; i < shapes.Count; i++) {
 				if(shapes[i] != null) {
+					shapes [i].Respawn();
 					Destroy (shapes [i].gameObject);
 				}
 			}
@@ -381,7 +382,8 @@ public class GameManager2 : MonoBehaviour {
 				Shape poly = (Shape)hit.collider.gameObject.GetComponent<Shape> ();
 				
 				Instantiate(poly.DestroyEffect, poly.gameObject.transform.position + new Vector3(0,0,5), poly.gameObject.transform.rotation);
-				
+
+				poly.Respawn();
 				Destroy (poly.gameObject);
 				
 			}
@@ -408,12 +410,12 @@ public class GameManager2 : MonoBehaviour {
 				Shape poly = (Shape)hit.collider.gameObject.GetComponent<Shape> ();
 				if (!poly.hasBeenSelected && polys.Count != sidesNeeded) {
 					if (poly.sides == sidesNeeded) {
-						if(isAdjacent(polys[polys.Count-1],poly)){
+						//if(isAdjacent(polys[polys.Count-1],poly)){
 
 							poly.hasBeenSelected = true;
 							polys.Add (poly);
 							connectSounds[polys.Count].Play();
-						}
+						//}
 
 
 					}
@@ -451,7 +453,7 @@ public class GameManager2 : MonoBehaviour {
 
 					Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position + new Vector3(0,0,5), polys[i].gameObject.transform.rotation);
 				
-
+					polys [i].Respawn();
 					Destroy (polys [i].gameObject);
 
 				}

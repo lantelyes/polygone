@@ -134,7 +134,8 @@ MonoBehaviour:
   sides: 6
   color: {r: .670588255, g: .211764708, b: 1, a: 1}
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  Speed: -5
+  Speed: 0
+  originSpawner: {fileID: 0}
   KillY: -10
   hasBeenSelected: 0
   isFirst: 0

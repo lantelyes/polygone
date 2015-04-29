@@ -9,6 +9,8 @@ public class Shape : MonoBehaviour {
 	public Color color;
 	public Color outlineColor;
 	public float Speed = -0.1f;
+
+
 	public Spawner2 originSpawner;
 
 	GameManager2 gameManager;
@@ -48,6 +50,10 @@ public class Shape : MonoBehaviour {
 	public virtual void OnExplode () {
 
 	
+	}
+
+	public void SetSpawner(Spawner2 sp) {
+		originSpawner = sp;
 	}
 
 	public void Respawn() {

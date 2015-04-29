@@ -19,8 +19,10 @@ public class Spawner2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		Spawn ();
+
 		tr = GetComponent<Transform> ();
+
+		Spawn ();
 		
 		
 	}
@@ -34,10 +36,15 @@ public class Spawner2 : MonoBehaviour {
 			shapeIndex = Random.Range(0,shapesToSpawn.Length);
 			
 			spawnPos = tr.position;
+
+
 			
 
-			tempShape = Instantiate (shapesToSpawn[shapeIndex], spawnPos, tr.rotation);
+			GameObject temp = (GameObject)Instantiate (shapesToSpawn[shapeIndex], spawnPos, tr.rotation);
+
+			tempShape = temp.GetComponent<Shape>();
 			tempShape.originSpawner = this;
+
 
 			
 			
