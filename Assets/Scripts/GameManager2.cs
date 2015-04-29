@@ -402,7 +402,7 @@ public class GameManager2 : MonoBehaviour {
 				if(!poly.justAlive) {
 					
 					Instantiate(poly.DestroyEffect, poly.gameObject.transform.position + new Vector3(0,0,5), poly.gameObject.transform.rotation);
-
+					score += poly.sides;
 					poly.Respawn();
 					Destroy (poly.gameObject);
 
