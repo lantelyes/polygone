@@ -238,7 +238,7 @@ public class GameManager2 : MonoBehaviour {
 
 			StoreHighscore(score);
 
-			Application.LoadLevel("gameover");
+			Application.LoadLevel("new_menu");
 		}
 
 
@@ -501,17 +501,17 @@ public class GameManager2 : MonoBehaviour {
 
 				if(currentStreak == streakTiers[4]){
 					Popup();
-					for(int k = 0; k < oldPositions.Count; k++) {
-							toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
-							for(int i =0 ; i < toExplode.Length; i++) {
-								if(toExplode[i].gameObject.tag == "shape") {
-									Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
-									Shape temp = (Shape)toExplode[i].gameObject.GetComponent<Shape>();
-									temp.Respawn();
-									Destroy (toExplode[i].gameObject);
-								}
-							}
-					}
+//					for(int k = 0; k < oldPositions.Count; k++) {
+//							toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
+//							for(int i =0 ; i < toExplode.Length; i++) {
+//								if(toExplode[i].gameObject.tag == "shape") {
+//									Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
+//									Shape temp = (Shape)toExplode[i].gameObject.GetComponent<Shape>();
+//									temp.Respawn();
+//									Destroy (toExplode[i].gameObject);
+//								}
+//							}
+//					}
 				}
 			
 			}
