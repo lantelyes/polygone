@@ -284,12 +284,15 @@ public class GameManager2 : MonoBehaviour {
 		
 			polyGones=0;
 
+
 			for (int i = 0; i < shapes.Count; i++) {
 				if(shapes[i] != null) {
 					shapes [i].Respawn();
 					Destroy (shapes [i].gameObject);
 				}
 			}
+
+			polys.Clear();
 
 		}
 
@@ -436,7 +439,7 @@ public class GameManager2 : MonoBehaviour {
 
 							poly.hasBeenSelected = true;
 							polys.Add (poly);
-							connectSounds[polys.Count].Play();
+							connectSounds[polys.Count - 1].Play();
 						//}
 
 
