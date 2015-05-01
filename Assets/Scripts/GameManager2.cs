@@ -8,11 +8,18 @@ public class GameManager2 : MonoBehaviour {
 
 	int[] highScores = new int[5];
 
+	
+	public Texture2D emptyProgressBar; // Set this in inspector.
+	public Texture2D fullProgressBar; // Set this in inspector.
+
+
 	public GameObject scoreManager;
 	List<Vector3> oldPositions;
 	List<GameObject> destroyEffects;
 
 	Collider[] toExplode;
+
+	float ninjaProgress = 1.0f;
 	
 
 	public List<float> levelSpeeds;
@@ -120,6 +127,18 @@ public class GameManager2 : MonoBehaviour {
 		}
 
 
+
+	}
+
+
+	void OnGUI() {
+
+		if (isNinja) {
+					
+			GUI.DrawTexture (new Rect (Screen.width / 4, Screen.height * 0.9f, Screen.width / 2, Screen.height / 12), emptyProgressBar);
+			GUI.DrawTexture (new Rect (Screen.width / 4, Screen.height * 0.9f, (Screen.width / 2) * ninjaProgress, Screen.height / 12), fullProgressBar);
+
+		}
 
 	}
 
@@ -291,8 +310,7 @@ public class GameManager2 : MonoBehaviour {
 					Destroy (shapes [i].gameObject);
 				}
 			}
-
-			polys.Clear();
+			 
 
 		}
 
@@ -320,9 +338,7 @@ public class GameManager2 : MonoBehaviour {
 
 
 		
-		
-		
-		//scoreTextMesh.text = "Score: " + score * 3000 + "\nStreak: " + currentStreak; 
+
 		scoreTextMesh.text = (score * 1000.0f * scoreMultiplier).ToString();
 		multiTextMesh.text = (scoreMultiplier) + "x";
 			
@@ -391,7 +407,7 @@ public class GameManager2 : MonoBehaviour {
 
 		if(isNinja){
 
-
+			ninjaProgress -= Time.deltaTime/3.0f;
 
 			slash.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,1.0f));
 	
@@ -414,6 +430,7 @@ public class GameManager2 : MonoBehaviour {
 			}
 			if(t>=1) {
 				isNinja = false;
+				ninjaProgress = 1.0f;
 			}
 		}
 
@@ -502,7 +519,7 @@ public class GameManager2 : MonoBehaviour {
 
 				}
 
-				if(currentStreak == streakTiers[4]){
+				if(currentStreak == streakTiers[1]){
 					Popup();
 //					for(int k = 0; k < oldPositions.Count; k++) {
 //							toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
@@ -515,6 +532,7 @@ public class GameManager2 : MonoBehaviour {
 //								}
 //							}
 //					}
+					currentStreak = 0;
 				}
 			
 			}

@@ -17,9 +17,9 @@ public class Popup : MonoBehaviour {
 	// Update is called once per fsrame
 	void Update () {
 
-		tr.localScale += (new Vector3 (5.0f, 5.0f, 5.0f) * fadeSpeed*  Time.deltaTime);
+		tr.localScale += (new Vector3 (5.0f, 5.0f, 5.0f) * fadeSpeed *  Time.deltaTime / 5.0f);
 
-		fade += Time.deltaTime * fadeSpeed;
+		fade += Time.deltaTime * fadeSpeed / 5.0f;
 
 		rend.material.color = (Color.Lerp(Color.grey,Color.clear,fade));
 
