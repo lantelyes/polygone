@@ -433,6 +433,7 @@ public class GameManager2 : MonoBehaviour {
 			if(t>=1) {
 				isNinja = false;
 				ninjaProgress = 1.0f;
+				t=0;
 			}
 		}
 
@@ -536,6 +537,7 @@ public class GameManager2 : MonoBehaviour {
 							}
 					}
 					currentStreak = 0;
+					ninjaProgress = 1.0f;
 				}
 			
 			}
