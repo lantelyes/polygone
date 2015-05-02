@@ -102,10 +102,10 @@ public class Shape : MonoBehaviour {
 
 		
 		if (isFirst && hasBeenSelected) {
-			transform.Rotate(0,gameManager.currentStreak,0);
+			tr.Rotate(0,gameManager.currentStreak,0);
 		}
 		if (!hasBeenSelected && gameManager.currentStreak == 0) {
-			transform.rotation = Quaternion.identity;
+			tr.rotation = Quaternion.identity;
 		}
 
 
@@ -118,10 +118,10 @@ public class Shape : MonoBehaviour {
 
 		if (!isSloMo) {
 			Time.timeScale = 1.0f;
-			transform.position = transform.position + new Vector3 (0, Speed * Time.deltaTime, 0);
+			tr.position = tr.position + new Vector3 (0, Speed * Time.deltaTime, 0);
 		} else {
 			Time.timeScale = .5f;
-			transform.position = transform.position + new Vector3 (0, Speed * Time.deltaTime, 0);
+			tr.position = tr.position + new Vector3 (0, Speed * Time.deltaTime, 0);
 		}
 
 

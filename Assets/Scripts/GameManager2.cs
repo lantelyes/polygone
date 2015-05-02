@@ -251,7 +251,8 @@ public class GameManager2 : MonoBehaviour {
 		CleanUp ();
 
 
-		music.pitch = 1 + audioOffset;
+		music.pitch = 1;// + audioOffset;
+		explosionSound.pitch = 1 + audioOffset;
 
 	
 
@@ -259,7 +260,15 @@ public class GameManager2 : MonoBehaviour {
 
 			StoreHighscore(score);
 
-			Application.LoadLevel("new_menu");
+			for (int i = 0; i < shapes.Count; i++) {
+				if(shapes[i] != null) {
+					Destroy (shapes [i].gameObject);
+				}
+			}
+
+			if(Input.GetKeyDown(KeyCode.Space)) {
+				Application.LoadLevel("new_menu");
+			}
 		}
 
 
@@ -293,7 +302,7 @@ public class GameManager2 : MonoBehaviour {
 			scoreMultiplier = 1.0f;
 		}
 
-		if (polyGones >= polyGonesNeeded[currentLevel]) {
+		if (polyGones >= polyGonesNeeded[currentLevel] && !gameOver) {
 
 			if(currentLevel == 4) {
 				gameOver = true;
@@ -341,7 +350,7 @@ public class GameManager2 : MonoBehaviour {
 
 		
 
-		scoreTextMesh.text = (score * 1000.0f * scoreMultiplier).ToString();
+		scoreTextMesh.text = (score * 100.0f * scoreMultiplier).ToString();
 		multiTextMesh.text = (scoreMultiplier) + "x";
 			
 
@@ -434,11 +443,12 @@ public class GameManager2 : MonoBehaviour {
 				isNinja = false;
 				ninjaProgress = 1.0f;
 				t=0;
+				polys.Clear();
 			}
 		}
 
 
-		if (isChecking && !isNinja) {
+		if (isChecking && !isNinja && !gameOver) {
 
 
 
@@ -500,6 +510,7 @@ public class GameManager2 : MonoBehaviour {
 				
 					polys [i].Respawn();
 					Destroy (polys [i].gameObject);
+				
 					explosionSound.Play();    
 
 				}
@@ -507,7 +518,7 @@ public class GameManager2 : MonoBehaviour {
 
 
 		
-				//audioOffset += 0.04f/(1+currentStreak);
+				audioOffset += 0.1f/(1+currentStreak);
 				currentStreak +=1 ;
 				streakExpireTime = 0.0f;
 				if(topStreak < 	currentStreak) {
