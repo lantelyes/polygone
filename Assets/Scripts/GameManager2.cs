@@ -24,6 +24,8 @@ public class GameManager2 : MonoBehaviour {
 
 	public List<float> levelSpeeds;
 	public List<AudioSource> connectSounds;
+
+	public AudioSource explosion;
 	public AudioSource music;
 
 	public Rigidbody ninjaPopup;
