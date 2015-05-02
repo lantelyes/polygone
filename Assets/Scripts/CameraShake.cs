@@ -1,44 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
+
 public class CameraShake : MonoBehaviour
 {
-	private Vector3 originPosition;
-	private Quaternion originRotation;
-	public float shake_decay = 0.00001f;
-	public float shake_intensity = 0.0f;
-
-	void Start() {
-
-		//Shake (0.02f);
-	}
-
-	public void SetDecay(float decay) {
-		
-		shake_decay = decay;
-	}
-
-
+	// Transform of the camera to shake. Grabs the gameObject's transform
+	// if null.
+	public Transform camTransform;
 	
-	void Update (){
-
-		if (shake_intensity < 0.02){
-			transform.position = originPosition + Random.insideUnitSphere * shake_intensity;
-			transform.rotation = new Quaternion(
-				originRotation.x + Random.Range (-shake_intensity,shake_intensity) * .2f,
-				originRotation.y + Random.Range (-shake_intensity,shake_intensity) * .2f,
-				originRotation.z + Random.Range (-shake_intensity,shake_intensity) * .2f,
-				originRotation.w + Random.Range (-shake_intensity,shake_intensity) * .2f);
-
+	// How long the object should shake for.
+	public float shake = 0f;
+	
+	// Amplitude of the shake. A larger value shakes the camera harder.
+	public float shakeAmount = 0.7f;
+	public float decreaseFactor = 1.0f;
+	
+	Vector3 originalPos;
+	
+	void Awake()
+	{
+		if (camTransform == null)
+		{
+			camTransform = GetComponent(typeof(Transform)) as Transform;
 		}
-		shake_intensity += shake_decay;
-
 	}
 	
-	public void Shake(){
-		originPosition = transform.position;
-		originRotation = transform.rotation;
-		shake_intensity = 0.0f;
-
-
+	void OnEnable()
+	{
+		originalPos = camTransform.localPosition;
+	}
+	
+	void Update()
+	{
+		if (shake > 0)
+		{
+			camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+			
+			shake -= Time.deltaTime * decreaseFactor;
+		}
+		else
+		{
+			shake = 0f;
+			camTransform.localPosition = originalPos;
+		}
 	}
 }

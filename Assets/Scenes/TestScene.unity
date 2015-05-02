@@ -2934,6 +2934,7 @@ GameObject:
   - 82: {fileID: 1943773452}
   - 82: {fileID: 1943773451}
   - 82: {fileID: 1943773450}
+  - 82: {fileID: 1943773456}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: manager
@@ -2968,6 +2969,7 @@ MonoBehaviour:
   - {fileID: 1943773452}
   - {fileID: 1943773451}
   - {fileID: 1943773450}
+  explosionSound: {fileID: 1943773456}
   music: {fileID: 1041987073}
   ninjaPopup: {fileID: 5475772, guid: 313759502710c45d2bf6700a27f318f8, type: 2}
   levelBuildingColors:
@@ -3404,6 +3406,75 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24322972, guid: ee6688c006f864165ad1d9fddc8c91af,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c843e07f31d61449eae21371886a36f0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &1943773456
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943773446}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 51934588adc8b48aab2880572618948b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
