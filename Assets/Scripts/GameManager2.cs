@@ -416,6 +416,17 @@ public class GameManager2 : MonoBehaviour {
 
 		}
 
+		if (Input.touchCount == 0 && !Input.GetMouseButton(0) ){
+
+			for(int i = 0; i< shapes.Count; i++) {
+				if(shapes[i] != null) {
+					shapes[i].hasBeenSelected = false;
+					shapes[i].isFirst = false;
+				}
+
+			}
+		}
+
 		if(isNinja){
 
 			ninjaProgress -= Time.deltaTime/3.0f;
@@ -475,11 +486,7 @@ public class GameManager2 : MonoBehaviour {
 
 					}
 				}
-				if(polys.Count == sidesNeeded && poly.isFirst) {
-					poly.hasBeenSelected = true;
-					polys.Add (poly);
-					
-				}
+
 			}
 
 		
@@ -558,6 +565,7 @@ public class GameManager2 : MonoBehaviour {
 			for(int i = 0; i< shapes.Count; i++) {
 				if(shapes[i] != null) {
 					shapes[i].SendMessage("SlowDown",false);
+					shapes[i].hasBeenSelected = false;
 				}
 
 			}
