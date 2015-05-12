@@ -6,12 +6,16 @@ using System.Collections.Generic;
 public class GameManager2 : MonoBehaviour {
 
 
+	public GameObject StreakBar;
+
+
 	int[] highScores = new int[5];
 
-	
-	public Texture2D emptyProgressBar; // Set this in inspector.
-	public Texture2D fullProgressBar; // Set this in inspector.
+	Renderer streakBarRend;
 
+	
+	public Texture2D emptyProgressBar;
+	public Texture2D fullProgressBar; 
 
 	public GameObject scoreManager;
 	List<Vector3> oldPositions;
@@ -136,9 +140,10 @@ public class GameManager2 : MonoBehaviour {
 	void OnGUI() {
 
 		if (isNinja) {
-					
-			GUI.DrawTexture (new Rect (Screen.width / 4, Screen.height * 0.9f, Screen.width / 2, Screen.height / 12), emptyProgressBar);
-			GUI.DrawTexture (new Rect (Screen.width / 4, Screen.height * 0.9f, (Screen.width / 2) * ninjaProgress, Screen.height / 12), fullProgressBar);
+
+
+		
+			
 
 		}
 
@@ -154,6 +159,8 @@ public class GameManager2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
+		streakBarRend = StreakBar.GetComponent<Renderer> ();
 
 		slash = (GameObject)Instantiate(slashObject,Camera.main.transform.position,Quaternion.identity);
 
@@ -251,6 +258,14 @@ public class GameManager2 : MonoBehaviour {
 		CleanUp ();
 
 
+
+		StreakBar.transform.localScale = Vector3.Lerp (new Vector3 (1.0f + (currentStreak), 1.0f, 1.0f), new Vector3 (1.0f, 1.0f, 1.0f),streakExpireTime/3.0f);
+
+		if (currentStreak != 0) {
+			streakBarRend.material.color = Color.Lerp (Color.red, levelSkyColors [currentLevel], streakExpireTime / 3.0f);
+		} else {
+			streakBarRend.material.color = levelSkyColors [currentLevel];
+		}
 		music.pitch = 1;// + audioOffset;
 		explosionSound.pitch = 1 + audioOffset;
 
