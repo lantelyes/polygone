@@ -139,6 +139,7 @@ public class GameManager2 : MonoBehaviour {
 		int oldHighscore = PlayerPrefs.GetInt("highscore", 0);    
 		if(newHighscore > oldHighscore)
 			PlayerPrefs.SetInt("highscore", newHighscore);
+		PlayerPrefs.Save ();
 	}
 
 	// Use this for initialization
@@ -258,17 +259,15 @@ public class GameManager2 : MonoBehaviour {
 
 		if (gameOver) {
 
-			StoreHighscore(score);
+			StoreHighscore(score * 100);
 
-			for (int i = 0; i < shapes.Count; i++) {
-				if(shapes[i] != null) {
-					Destroy (shapes [i].gameObject);
-				}
-			}
 
-			if(Input.GetKeyDown(KeyCode.Space)) {
-				Application.LoadLevel("new_menu");
-			}
+
+
+			Application.LoadLevel("new_menu");
+
+
+
 		}
 
 
@@ -290,8 +289,6 @@ public class GameManager2 : MonoBehaviour {
 
 		if (currentStreak == streakTiers [currentTier]) {
 	
-		
-			scoreMultiplier += 1.0f;
 			currentTier++;
 		
 
