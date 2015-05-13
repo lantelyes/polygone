@@ -6,12 +6,18 @@ using System.Collections.Generic;
 public class GameManager2 : MonoBehaviour {
 
 
-	int[] highScores = new int[5];
+	public GameObject StreakBar;
+	public GameObject levelIndicator;
+
+
+
+	Renderer streakBarRend;
+
+	bool isStreak = false;
 
 	
-	public Texture2D emptyProgressBar; // Set this in inspector.
-	public Texture2D fullProgressBar; // Set this in inspector.
-
+	public Texture2D emptyProgressBar;
+	public Texture2D fullProgressBar; 
 
 	public GameObject scoreManager;
 	List<Vector3> oldPositions;
@@ -65,6 +71,7 @@ public class GameManager2 : MonoBehaviour {
 	public GameObject slashObject;
 
 	GameObject slash;
+	int topStreak;
 
 
 	float oldDelay;
@@ -79,7 +86,7 @@ public class GameManager2 : MonoBehaviour {
 	public int currentLevel = 0;
 	public int streaksNeeded = 5;
 	public int currentStreak;
-	public int topStreak;
+
 	public float streakExpireTime = 0.0f;
 	public List<int> polyGonesNeeded;
 	int numLevels = 4;
@@ -113,32 +120,15 @@ public class GameManager2 : MonoBehaviour {
 		}
 
 	}
-
-	void StoreScores(int score) {
-
-		for (int i = 0; i<highScores.Length; i++){
-
-			string highScoreKey = "HighScore"+(i+1).ToString();
-			highScore = PlayerPrefs.GetInt(highScoreKey,0);
-
-			if(score>highScore){
-				int temp = highScore;
-				PlayerPrefs.SetInt(highScoreKey,score);
-					score = temp;
-			}
-		}
-
-
-
-	}
-
+	
 
 	void OnGUI() {
 
 		if (isNinja) {
-					
-			GUI.DrawTexture (new Rect (Screen.width / 4, Screen.height * 0.9f, Screen.width / 2, Screen.height / 12), emptyProgressBar);
-			GUI.DrawTexture (new Rect (Screen.width / 4, Screen.height * 0.9f, (Screen.width / 2) * ninjaProgress, Screen.height / 12), fullProgressBar);
+
+
+		
+			
 
 		}
 
@@ -154,6 +144,8 @@ public class GameManager2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		highScore =  PlayerPrefs.GetInt ("hs");
+		streakBarRend = StreakBar.GetComponent<Renderer> ();
 
 		slash = (GameObject)Instantiate(slashObject,Camera.main.transform.position,Quaternion.identity);
 
@@ -251,6 +243,14 @@ public class GameManager2 : MonoBehaviour {
 		CleanUp ();
 
 
+
+		StreakBar.transform.localScale = Vector3.Lerp (new Vector3 (1.0f + (currentStreak), 1.0f, 1.0f), new Vector3 (1.0f, 1.0f, 1.0f),streakExpireTime/3.0f);
+
+		if (currentStreak != 0) {
+			streakBarRend.material.color = Color.Lerp (Color.red, levelSkyColors [currentLevel], streakExpireTime / 3.0f);
+		} else {
+			streakBarRend.material.color = levelSkyColors [currentLevel];
+		}
 		music.pitch = 1;// + audioOffset;
 		explosionSound.pitch = 1 + audioOffset;
 
@@ -317,8 +317,9 @@ public class GameManager2 : MonoBehaviour {
 
 			for (int i = 0; i < shapes.Count; i++) {
 				if(shapes[i] != null) {
-					shapes [i].Respawn();
-					Destroy (shapes [i].gameObject);
+
+					//shapes [i].Respawn();
+				
 				}
 			}
 			 
@@ -336,6 +337,7 @@ public class GameManager2 : MonoBehaviour {
 				numPolysDestroyed = 0;
 				t = 0;
 
+
 			
 			}
 			if (currentLevel != numLevels) {
@@ -351,7 +353,7 @@ public class GameManager2 : MonoBehaviour {
 		
 
 		scoreTextMesh.text = (score * 100.0f * scoreMultiplier).ToString();
-		multiTextMesh.text = (scoreMultiplier) + "x";
+		multiTextMesh.text = "Level: " + (currentLevel + 1);
 			
 
 
@@ -491,12 +493,47 @@ public class GameManager2 : MonoBehaviour {
 
 		
 
-			if (polys.Count == sidesNeeded) {
+			if (polys.Count == sidesNeeded ) {
 
-				oldPositions.Clear();
-				destroyEffects.Clear();
+				if(currentStreak == streakTiers[1]){
+					isNinja = true;
+					NinjaPopup();
+					
+				}
+				
+				if(currentStreak == streakTiers[2]){
+					
+					
+					for(int i = 0; i< shapes.Count ; i++) {
+						Instantiate(shapes[i].DestroyEffect, shapes[i].gameObject.transform.position + new Vector3(0,0,5), shapes[i].gameObject.transform.rotation);
+						
+					
+						shapes[i].Respawn();
+						Destroy (shapes [i].gameObject);
+					
+						
+						
+					}
 
-			
+					shapes.Clear();
+					isStreak = true;
+				
+					
+				}
+				if(currentStreak == streakTiers[0]){
+//		fh
+//					for(int k = 0; k < oldPositions.Count; k++) {
+//						Collider[] toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
+//						for(int i =0 ; i < toExplode.Length; i++) {
+//							if(toExplode[i].gameObject.tag == "shape") {
+//								Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
+//								toExplode[i].gameObject.GetComponent<Shape>().Respawn();
+//								Destroy (toExplode[i].gameObject);
+//							}
+//						}
+//					}
+//					isStreak = true;
+				}
 				numPolysDestroyed += polys.Count - 1;
 
 			
@@ -504,22 +541,24 @@ public class GameManager2 : MonoBehaviour {
 				score += polys[0].sides;
 
 
-				
-				for (int i = 0; i < polys.Count; i++) {
+				if(!isStreak) {
+					for (int i = 0; i < polys.Count; i++) {
 
-					polys[i].transform.rotation = Quaternion.identity;
+						polys[i].transform.rotation = Quaternion.identity;
 
-					oldPositions.Add(polys[i].transform.position);
-					destroyEffects.Add(polys[i].DestroyEffect);
+						oldPositions.Add(polys[i].transform.position);
+						destroyEffects.Add(polys[i].DestroyEffect);
 
 
-					Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position + new Vector3(0,0,5), polys[i].gameObject.transform.rotation);
-				
-					polys [i].Respawn();
-					Destroy (polys [i].gameObject);
-				
-					explosionSound.Play();    
+						Instantiate(polys[i].DestroyEffect, polys[i].gameObject.transform.position + new Vector3(0,0,5), polys[i].gameObject.transform.rotation);
+					
 
+						polys [i].Respawn();
+						Destroy (polys [i].gameObject);
+					
+						explosionSound.Play();    
+
+					}
 				}
 				polyGones++;
 
@@ -535,29 +574,8 @@ public class GameManager2 : MonoBehaviour {
 				polys.Clear ();
 				isChecking = false;
 
-				if(currentStreak == streakTiers[0]){
-					isNinja = true;
-					NinjaPopup();
 
-				}
-
-				if(currentStreak == streakTiers[1]){
-					Popup();
-					for(int k = 0; k < oldPositions.Count; k++) {
-							toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
-							for(int i =0 ; i < toExplode.Length; i++) {
-								if(toExplode[i].gameObject.tag == "shape") {
-									Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
-									Shape temp = (Shape)toExplode[i].gameObject.GetComponent<Shape>();
-									//temp.Respawn();
-									//Destroy (toExplode[i].gameObject);
-								}
-							}
-					}
-					currentStreak = 0;
-					ninjaProgress = 1.0f;
-				}
-			
+				isStreak = false;
 			}
 		}
 		else {
@@ -566,6 +584,7 @@ public class GameManager2 : MonoBehaviour {
 				if(shapes[i] != null) {
 					shapes[i].SendMessage("SlowDown",false);
 					shapes[i].hasBeenSelected = false;
+
 				}
 
 			}
