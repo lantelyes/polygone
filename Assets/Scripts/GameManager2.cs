@@ -73,6 +73,8 @@ public class GameManager2 : MonoBehaviour {
 	GameObject slash;
 	int topStreak;
 
+	float decayTime = 2.0f;
+
 
 	float oldDelay;
 
@@ -245,10 +247,10 @@ public class GameManager2 : MonoBehaviour {
 
 
 
-		StreakBar.transform.localScale = Vector3.Lerp (new Vector3 (1.0f + (currentStreak), 1.0f, 1.0f), new Vector3 (1.0f, 1.0f, 1.0f),streakExpireTime/3.0f);
+		StreakBar.transform.localScale = Vector3.Lerp (new Vector3 (1.0f + (currentStreak), 1.0f, 1.0f), new Vector3 (1.0f, 1.0f, 1.0f),streakExpireTime/decayTime);
 
 		if (currentStreak != 0) {
-			streakBarRend.material.color = Color.Lerp (Color.red, levelSkyColors [currentLevel], streakExpireTime / 3.0f);
+			streakBarRend.material.color = Color.Lerp (Color.red, levelSkyColors [currentLevel], streakExpireTime / decayTime);
 		} else {
 			streakBarRend.material.color = levelSkyColors [currentLevel];
 		}
@@ -264,7 +266,7 @@ public class GameManager2 : MonoBehaviour {
 
 
 
-			Application.LoadLevel("new_menu");
+			Application.LoadLevel("gameover");
 
 
 
@@ -279,7 +281,7 @@ public class GameManager2 : MonoBehaviour {
 			}
 		}
 
-		if (streakExpireTime >= 3.0f) {
+		if (streakExpireTime >= decayTime) {
 
 			streakExpireTime = 0.0f;
 			currentStreak = 0;
