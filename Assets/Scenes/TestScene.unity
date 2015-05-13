@@ -2784,7 +2784,7 @@ MonoBehaviour:
   - {r: .917647064, g: .639215708, b: .384313732, a: 0}
   - {r: .635294139, g: .407843143, b: .796078444, a: 0}
   fadeDuration: 1
-  streakTiers: 010000000200000003000000140000001e000000
+  streakTiers: 01000000050000000c000000140000001e000000
   levelPopups:
   - {fileID: 5475772, guid: 5bc3cf059674942e39d97cfcc54dfd06, type: 2}
   - {fileID: 5475772, guid: f0aa138bced3b40498f83aa395716505, type: 2}
