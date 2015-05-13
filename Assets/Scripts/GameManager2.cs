@@ -515,6 +515,7 @@ public class GameManager2 : MonoBehaviour {
 					shapes.Clear();
 					isStreak = true;
 					currentStreak=0;
+					explosionSound.Play();
 					
 				}
 				if(currentStreak == streakTiers[0]){
