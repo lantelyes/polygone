@@ -7,11 +7,14 @@ public class GameManager: MonoBehaviour {
 
 	public GameObject scoreManager;
 
+
 	public List<float> levelSpeeds;
 	public List<AudioSource> connectSounds;
 	public AudioSource music;
 
 	public Rigidbody ninjaPopup;
+
+
 
 
 	float audioOffset = 0.0f;
@@ -412,18 +415,7 @@ public class GameManager: MonoBehaviour {
 
 				}
 
-				if(currentStreak == streakTiers[2]){
-					Popup();
-					for(int k = 0; k < oldPositions.Count; k++) {
-							Collider[] toExplode = Physics.OverlapSphere(oldPositions[k],4.0f);
-							for(int i =0 ; i < toExplode.Length; i++) {
-								if(toExplode[i].gameObject.tag == "shape") {
-									Instantiate(toExplode[i].gameObject.GetComponent<Shape>().DestroyEffect, toExplode[i].gameObject.transform.position + new Vector3(0,0,5), Quaternion.identity );
-									Destroy (toExplode[i].gameObject);
-								}
-							}
-					}
-				}
+
 			
 			}
 		}
