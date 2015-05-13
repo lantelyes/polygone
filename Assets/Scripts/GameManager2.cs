@@ -514,7 +514,7 @@ public class GameManager2 : MonoBehaviour {
 
 					shapes.Clear();
 					isStreak = true;
-				
+					currentStreak=0;
 					
 				}
 				if(currentStreak == streakTiers[0]){
