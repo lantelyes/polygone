@@ -3,10 +3,10 @@ using System.Collections;
 
 public class StartArcade : MonoBehaviour {
 
+
 	public GameObject creditsButton;
 	public GameObject tutorialButton;
-	public MovieTexture tutorial;
-	public MovieTexture credits;
+
 	bool tutorialTrigger = false;
 	bool creditsTrigger = false; 
 
@@ -26,6 +26,21 @@ public class StartArcade : MonoBehaviour {
 	{
 		creditsTrigger = true;
 	}
+	
+//	if(tutorialTrigger)
+//	{
+//		Handheld.PlayFullScreenMovie("polygone_tutorial.mp4", Color.black, FullScreenMovieControlMode.Full, FullScreenMovieScalingMode.AspectFill);
+//		tutorialTrigger = false;
+//	}
+//
+//	else if(creditsTrigger)
+//	{
+//		Handheld.PlayFullScreenMovie("credits.mp4", Color.black, FullScreenMovieControlMode.Full, FullScreenMovieScalingMode.AspectFill);
+//		creditsTrigger = false;
+//	}
+
+	public MovieTexture tutorial;
+	public MovieTexture credits;
 
 	void OnGUI()
 	{
@@ -34,11 +49,6 @@ public class StartArcade : MonoBehaviour {
 			tutorial.Play ();
 			StartCoroutine (Wait (tutorial.duration));
 
-//			if(tutorial.isPlaying)
-//			{
-//				print ("stopped");
-//				tutorialTrigger = false;
-//			}
 		} else if (creditsTrigger) {
 			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), credits);
 			credits.Play ();
@@ -60,4 +70,5 @@ public class StartArcade : MonoBehaviour {
 			Destroy (creditsButton);
 		}
 	}
+
 }
