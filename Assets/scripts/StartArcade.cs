@@ -39,36 +39,36 @@ public class StartArcade : MonoBehaviour {
 //		creditsTrigger = false;
 //	}
 
-	public MovieTexture tutorial;
-	public MovieTexture credits;
+	//public MovieTexture tutorial;
+	//public MovieTexture credits;
 
-	void OnGUI()
-	{
-		if (tutorialTrigger) {
-			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), tutorial);
-			tutorial.Play ();
-			StartCoroutine (Wait (tutorial.duration));
+	//void OnGUI()
+	//{
+	//	if (tutorialTrigger) {
+	//		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), tutorial);
+	//		tutorial.Play ();
+	//		StartCoroutine (Wait (tutorial.duration));
 
-		} else if (creditsTrigger) {
-			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), credits);
-			credits.Play ();
-			StartCoroutine (Wait (credits.duration));
-		}
-	}
+	//	} else if (creditsTrigger) {
+	//		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), credits);
+	//		credits.Play ();
+	//		StartCoroutine (Wait (credits.duration));
+	//	}
+	//}
 
-	private IEnumerator Wait(float duration)
-	{
-		yield return new WaitForSeconds(duration);
-		if (tutorialTrigger) {
-			tutorial.Stop ();
-			tutorialTrigger = false;
-			Destroy (tutorialButton);
-		} 
-		else {
-			credits.Stop ();
-			creditsTrigger = false;
-			Destroy (creditsButton);
-		}
-	}
+	//private IEnumerator Wait(float duration)
+	//{
+	//	yield return new WaitForSeconds(duration);
+	//	if (tutorialTrigger) {
+	//		tutorial.Stop ();
+	//		tutorialTrigger = false;
+	//		Destroy (tutorialButton);
+	//	} 
+	//	else {
+	//		credits.Stop ();
+	//		creditsTrigger = false;
+	//		Destroy (creditsButton);
+	//	}
+	//}
 
 }

@@ -21,7 +21,7 @@ public class Ninja : MonoBehaviour {
 
 		fade = Mathf.Sin (Time.deltaTime/50.0f);
 
-		rend.material.color = (Color.Lerp(Color.grey,Color.clear,fade));
+
 
 		if (rend.material.color.a <= 0) {
 			//Destroy(gameObject);

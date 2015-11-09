@@ -8,9 +8,6 @@ public class GameManager2 : MonoBehaviour {
 
 	public GameObject StreakBar;
 	public GameObject levelIndicator;
-
-
-
 	Renderer streakBarRend;
 
 	bool isStreak = false;
@@ -37,13 +34,14 @@ public class GameManager2 : MonoBehaviour {
 	public Rigidbody ninjaPopup;
 
 
+
 	float audioOffset = 0.0f;
 
 	public List<Color> levelBuildingColors; 
-	public List<Color> levelSkyColors; 
+	public List<Color> levelSkyColors;
 
-
-	bool isNinja = false;
+    bool isNinjaAvailable = false;
+    bool isNinja = false;
 	int currentTier = 0;
 	float t = 0.0f;
 	public float fadeDuration = 1.0f;
@@ -126,7 +124,7 @@ public class GameManager2 : MonoBehaviour {
 
 	void OnGUI() {
 
-		if (isNinja) {
+		if (isNinjaAvailable) {
 
 
 		
@@ -255,7 +253,7 @@ public class GameManager2 : MonoBehaviour {
 			streakBarRend.material.color = levelSkyColors [currentLevel];
 		}
 		music.pitch = 1;// + audioOffset;
-		explosionSound.pitch = 1 + audioOffset;
+        explosionSound.pitch = 1;// + audioOffset;
 
 	
 
@@ -453,7 +451,8 @@ public class GameManager2 : MonoBehaviour {
 			}
 			if(t>=1) {
 				isNinja = false;
-				ninjaProgress = 1.0f;
+                isNinjaAvailable = false;
+                ninjaProgress = 1.0f;
 				t=0;
 				polys.Clear();
 			}
@@ -495,8 +494,8 @@ public class GameManager2 : MonoBehaviour {
 			if (polys.Count == sidesNeeded ) {
 
 				if(currentStreak == streakTiers[1]){
-					isNinja = true;
-					NinjaPopup();
+					isNinjaAvailable = true;
+					//NinjaPopup();
 					
 				}
 				
